@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horta Escolar SESI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;500;600;700&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+</head>
+<body>
+    <!-- Particle Background -->
+    <div id="particles-js"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">Horta Escolar</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#horta">Horta</a></li>
+                <li><a href="#galeria">Galeria</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <!-- Menu de 3 pontos para área administrativa -->
+            <div class="admin-menu" id="adminMenu">
+                <button class="admin-toggle" onclick="toggleAdminMenu()">
+                    <span class="admin-dots">⋮⋮⋮</span>
+                </button>
+                <div class="admin-dropdown" id="adminDropdown">
+                    <a href="#" onclick="openLogin()">
+                        <i data-lucide="user"></i>
+                        Área Administrativa
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">Horta Escolar SESI</h1>
+                <p class="hero-subtitle">Transformando ciência em sustentabilidade</p>
+                <div class="hero-buttons">
+                    <button class="btn-primary" onclick="scrollToSection('sobre')">
+                        Conhecer a Horta
+                    </button>
+                    <button class="btn-secondary" onclick="scrollToSection('sugestoes')">
+                        Enviar Sugestão
+                    </button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-distintivo">
+                    <img src="user_input_files/7690bce4-dd12-4f53-8580-10609c76fe73.png" alt="Logo Equipe Lavoisier" class="distintivo-img">
+                </div>
+            </div>
+        </div>
+        <div class="hero-badge">
+            <span class="badge-text">Projeto Escolar SESI</span>
+            <span class="badge-subtitle">Referência na Indústria</span>
+        </div>
+    </section>
+
+    <!-- Sobre o Projeto -->
+    <section id="sobre" class="section">
+        <div class="container">
+            <h2 class="section-title">Sobre o Projeto</h2>
+            
+            <div class="sobre-grid">
+                <div class="sobre-card">
+                    <i data-lucide="microscope" class="card-icon"></i>
+                    <h3>O que é o Projeto</h3>
+                    <p>A horta escolar Lavoisier é um projeto educativo que une ciência, sustentabilidade e agricultura urbana, formando estudantes conscientes sobre o meio ambiente.</p>
+                </div>
+                
+                <div class="sobre-card">
+                    <i data-lucide="factory" class="card-icon"></i>
+                    <h3>Conexão com o SESI</h3>
+                    <p>O projeto segue os princípios de inovação, ciência, sustentabilidade e competência industrial do SESI, formando futuros profissionais conscientes.</p>
+                </div>
+            </div>
+
+            <!-- Missão, Visão e Valores -->
+            <div class="mvv-section">
+                <h3 class="mvv-title">Missão, Visão e Valores</h3>
+                <div class="mvv-grid">
+                    <div class="mvv-card" data-tilt>
+                        <i data-lucide="target" class="mvv-icon"></i>
+                        <h4>Missão</h4>
+                        <p>Aprender pela prática, conectando teoria científica com aplicação real na agricultura urbana</p>
+                    </div>
+                    <div class="mvv-card" data-tilt>
+                        <i data-lucide="eye" class="mvv-icon"></i>
+                        <h4>Visão</h4>
+                        <p>Formar estudantes conscientes sobre sustentabilidade e ciência aplicada ao cotidiano</p>
+                    </div>
+                    <div class="mvv-card" data-tilt>
+                        <i data-lucide="heart" class="mvv-icon"></i>
+                        <h4>Valores</h4>
+                        <p>Respeito, cuidado ambiental, responsabilidade e inovação sustentável</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Linha do Tempo -->
+            <div class="timeline">
+                <h3 class="timeline-title">Linha do Tempo da Horta</h3>
+                <div class="timeline-container">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4>Fundação</h4>
+                            <p>Início do projeto e primeira planejamento</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4>Primeira Plantação</h4>
+                            <p>Plantio das primeiras mudas de alface e tomate</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4>Primeira Colheita</h4>
+                            <p>Celebração da primeira colheita de sucesso</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4>Novos Canteiros</h4>
+                            <p>Expansão para novos tipos de plantas e temperos</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4>Meta Futura</h4>
+                            <p>Implementar sistema de compostagem e irrigação automática</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sugestões dos Alunos -->
+    <section id="sugestoes" class="section">
+        <div class="container">
+            <h2 class="section-title">Sugestões dos Alunos</h2>
+            
+            <div class="sugestoes-content">
+                <div class="sugestoes-form">
+                    <h3>Envie sua Sugestão</h3>
+                    <form class="form" id="sugestaoForm">
+                        <div class="form-group">
+                            <label for="nome">Nome</label>
+                            <input type="text" id="nome" name="nome" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="turma">Turma</label>
+                            <input type="text" id="turma" name="turma" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="categoria">Categoria da Sugestão</label>
+                            <select id="categoria" name="categoria" required>
+                                <option value="">Selecione uma categoria</option>
+                                <option value="plantas">Plantas</option>
+                                <option value="estrutura">Estrutura</option>
+                                <option value="cuidados">Cuidados</option>
+                                <option value="ideias">Ideias Criativas</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="planta-sugestao">Sugestão de nova planta para cultivo</label>
+                            <textarea id="planta-sugestao" name="planta-sugestao" rows="3" placeholder="Que planta você acha que deveríamos adicionar à horta? Por quê?"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="sugestao">Sua Sugestão</label>
+                            <textarea id="sugestao" name="sugestao" rows="4" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary">Enviar Sugestão</button>
+                    </form>
+                </div>
+                
+                <div class="sugestoes-aprovadas">
+                    <h3>Sugestões Aprovadas</h3>
+                    <div class="suggestions-grid">
+                        <div class="suggestion-card">
+                            <div class="suggestion-header">
+                                <span class="suggestion-category">Plantas</span>
+                                <span class="suggestion-votes">12 votos</span>
+                            </div>
+                            <h4>Cultivo de Manjericão</h4>
+                            <p>Perfeito para temperos e muito fácil de cuidar</p>
+                            <div class="suggestion-author">Por João - 3º C</div>
+                        </div>
+                        
+                        <div class="suggestion-card">
+                            <div class="suggestion-header">
+                                <span class="suggestion-category">Estrutura</span>
+                                <span class="suggestion-votes">8 votos</span>
+                            </div>
+                            <h4>Sistema de Irrigação</h4>
+                            <p>Para facilitar a rega automática das plantas</p>
+                            <div class="suggestion-author">Por Maria - 2º B</div>
+                        </div>
+                        
+                        <div class="suggestion-card">
+                            <div class="suggestion-header">
+                                <span class="suggestion-category">Ideias</span>
+                                <span class="suggestion-votes">15 votos</span>
+                            </div>
+                            <h4>Horta Suspensa</h4>
+                            <p>Usar o espaço vertical para mais plantas</p>
+                            <div class="suggestion-author">Por Pedro - 1º A</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tempo de Colheitas -->
+    <section id="horta" class="section">
+        <div class="container">
+            <h2 class="section-title">Tempo de Colheitas</h2>
+            
+            <div class="colheitas-grid">
+                <div class="planta-card" data-plant="alface">
+                    <div class="planta-icon">🥬</div>
+                    <h3>Alface</h3>
+                    <div class="planta-info">
+                        <span class="tempo">30 dias</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-progress="100"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="planta-card" data-plant="cenoura">
+                    <div class="planta-icon">🥕</div>
+                    <h3>Cenoura</h3>
+                    <div class="planta-info">
+                        <span class="tempo">80 dias</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-progress="60"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="planta-card" data-plant="tomate">
+                    <div class="planta-icon">🍅</div>
+                    <h3>Tomate</h3>
+                    <div class="planta-info">
+                        <span class="tempo">70 dias</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-progress="75"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="planta-card" data-plant="salsinha">
+                    <div class="planta-icon">🌿</div>
+                    <h3>Salsinha</h3>
+                    <div class="planta-info">
+                        <span class="tempo">45 dias</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-progress="90"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="planta-card" data-plant="manjericao">
+                    <div class="planta-icon">🌱</div>
+                    <h3>Manjericão</h3>
+                    <div class="planta-info">
+                        <span class="tempo">25 dias</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-progress="95"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="planta-card" data-plant="cebolinha">
+                    <div class="planta-icon">🧅</div>
+                    <h3>Cebolinha</h3>
+                    <div class="planta-info">
+                        <span class="tempo">35 dias</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-progress="85"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="planta-card" data-plant="pimentao">
+                    <div class="planta-icon">🫑</div>
+                    <h3>Pimentão</h3>
+                    <div class="planta-info">
+                        <span class="tempo">90 dias</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-progress="45"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="planta-card" data-plant="rabanete">
+                    <div class="planta-icon">🟣</div>
+                    <h3>Rabanete</h3>
+                    <div class="planta-info">
+                        <span class="tempo">28 dias</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-progress="100"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gráfico de Crescimento -->
+            <div class="crescimento-chart">
+                <h3>Crescimento por Semana</h3>
+                <canvas id="growthChart" width="800" height="400"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeria da Horta -->
+    <section id="galeria" class="section">
+        <div class="container">
+            <h2 class="section-title">Galeria da Horta</h2>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://picsum.photos/400/300?random=1" alt="Alunos cuidando da horta">
+                    <div class="gallery-overlay">
+                        <i data-lucide="camera"></i>
+                        <span>Alunos Cuidando</span>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://picsum.photos/400/300?random=2" alt="Mudas de plantas">
+                    <div class="gallery-overlay">
+                        <i data-lucide="camera"></i>
+                        <span>Mudas</span>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://picsum.photos/400/300?random=3" alt="Sistema de irrigação">
+                    <div class="gallery-overlay">
+                        <i data-lucide="camera"></i>
+                        <span>Irrigação</span>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://picsum.photos/400/300?random=4" alt="Primeira colheita">
+                    <div class="gallery-overlay">
+                        <i data-lucide="camera"></i>
+                        <span>Primeira Colheita</span>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://picsum.photos/400/300?random=5" alt="Sementes">
+                    <div class="gallery-overlay">
+                        <i data-lucide="camera"></i>
+                        <span>Sementes</span>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://picsum.photos/400/300?random=6" alt="Ferramentas da horta">
+                    <div class="gallery-overlay">
+                        <i data-lucide="camera"></i>
+                        <span>Ferramentas</span>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://picsum.photos/400/300?random=7" alt="Canteiros organizados">
+                    <div class="gallery-overlay">
+                        <i data-lucide="camera"></i>
+                        <span>Canteiros</span>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://picsum.photos/400/300?random=8" alt="Fazendo compostagem">
+                    <div class="gallery-overlay">
+                        <i data-lucide="camera"></i>
+                        <span>Compostagem</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Painel de Crescimento -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Painel de Crescimento</h2>
+            
+            <div class="painel-grid">
+                <div class="painel-card">
+                    <i data-lucide="trending-up" class="painel-icon"></i>
+                    <h3>Altura Média</h3>
+                    <div class="metric-value">25 cm</div>
+                    <div class="metric-change">+5cm esta semana</div>
+                </div>
+                
+                <div class="painel-card">
+                    <i data-lucide="droplets" class="painel-icon"></i>
+                    <h3>Umidade do Solo</h3>
+                    <div class="metric-value">65%</div>
+                    <div class="metric-change">Ideal para crescimento</div>
+                </div>
+                
+                <div class="painel-card">
+                    <i data-lucide="bag" class="painel-icon"></i>
+                    <h3>Adubo Utilizado</h3>
+                    <div class="metric-value">Orgânico</div>
+                    <div class="metric-change">Composto caseiro</div>
+                </div>
+                
+                <div class="painel-card">
+                    <i data-lucide="clock" class="painel-icon"></i>
+                    <h3>Ciclos de Rega</h3>
+                    <div class="metric-value">2x/dia</div>
+                    <div class="metric-change">Manhã e tarde</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ciência na Horta -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Ciência na Horta</h2>
+            
+            <div class="ciencia-grid">
+                <div class="ciencia-card" data-tilt>
+                    <div class="ciencia-icon">
+                        <i data-lucide="sun" class="icon"></i>
+                    </div>
+                    <h3>Fotossíntese</h3>
+                    <p>Processo pelo qual as plantas convertem luz solar em energia, produzindo oxigênio e glicose.</p>
+                </div>
+                
+                <div class="ciencia-card" data-tilt>
+                    <div class="ciencia-icon">
+                        <i data-lucide="cloud-rain" class="icon"></i>
+                    </div>
+                    <h3>Ciclo da Água</h3>
+                    <p>Como a água se move pelo solo, plantas e atmosfera, fundamental para o crescimento.</p>
+                </div>
+                
+                <div class="ciencia-card" data-tilt>
+                    <div class="ciencia-icon">
+                        <i data-lucide="atom" class="icon"></i>
+                    </div>
+                    <h3>Nutrientes do Solo</h3>
+                    <p>Nitrogênio, fósforo e potássio são essenciais para o desenvolvimento saudável das plantas.</p>
+                </div>
+                
+                <div class="ciencia-card" data-tilt>
+                    <div class="ciencia-icon">
+                        <i data-lucide="recycle" class="icon"></i>
+                    </div>
+                    <h3>Compostagem</h3>
+                    <p>Transformação de resíduos orgânicos em adubo natural, fechando o ciclo de nutrientes.</p>
+                </div>
+                
+                <div class="ciencia-card" data-tilt>
+                    <div class="ciencia-icon">
+                        <i data-lucide="butterfly" class="icon"></i>
+                    </div>
+                    <h3>Polinização</h3>
+                    <p>Transferência de pólen entre flores, essencial para a produção de frutos e sementes.</p>
+                </div>
+                
+                <div class="ciencia-card" data-tilt>
+                    <div class="ciencia-icon">
+                        <i data-lucide="thermometer" class="icon"></i>
+                    </div>
+                    <h3>Fotoperíodo</h3>
+                    <p>Duração da luz solar que influencia o crescimento e floração das plantas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catálogo de Plantas -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Plantas da Nossa Horta</h2>
+            
+            <div class="catalogo-grid">
+                <div class="planta-catalogo">
+                    <div class="planta-image">
+                        <img src="https://picsum.photos/300/200?random=21" alt="Alface">
+                    </div>
+                    <div class="planta-info">
+                        <h3>Alface</h3>
+                        <p><strong>Rega:</strong> Diária</p>
+                        <p><strong>Sol:</strong> 4-6 horas</p>
+                        <p><strong>Colheita:</strong> 30 dias</p>
+                    </div>
+                </div>
+                
+                <div class="planta-catalogo">
+                    <div class="planta-image">
+                        <img src="https://picsum.photos/300/200?random=22" alt="Couve">
+                    </div>
+                    <div class="planta-info">
+                        <h3>Couve</h3>
+                        <p><strong>Rega:</strong> A cada 2 dias</p>
+                        <p><strong>Sol:</strong> 3-5 horas</p>
+                        <p><strong>Colheita:</strong> 60 dias</p>
+                    </div>
+                </div>
+                
+                <div class="planta-catalogo">
+                    <div class="planta-image">
+                        <img src="https://picsum.photos/300/200?random=23" alt="Espinafre">
+                    </div>
+                    <div class="planta-info">
+                        <h3>Espinafre</h3>
+                        <p><strong>Rega:</strong> A cada 2 dias</p>
+                        <p><strong>Sol:</strong> 3-4 horas</p>
+                        <p><strong>Colheita:</strong> 40 dias</p>
+                    </div>
+                </div>
+                
+                <div class="planta-catalogo">
+                    <div class="planta-image">
+                        <img src="https://picsum.photos/300/200?random=24" alt="Tomate">
+                    </div>
+                    <div class="planta-info">
+                        <h3>Tomate</h3>
+                        <p><strong>Rega:</strong> Diária</p>
+                        <p><strong>Sol:</strong> 6-8 horas</p>
+                        <p><strong>Colheita:</strong> 70 dias</p>
+                    </div>
+                </div>
+                
+                <div class="planta-catalogo">
+                    <div class="planta-image">
+                        <img src="https://picsum.photos/300/200?random=25" alt="Cebolinha">
+                    </div>
+                    <div class="planta-info">
+                        <h3>Cebolinha</h3>
+                        <p><strong>Rega:</strong> A cada 2 dias</p>
+                        <p><strong>Sol:</strong> 4-6 horas</p>
+                        <p><strong>Colheita:</strong> 35 dias</p>
+                    </div>
+                </div>
+                
+                <div class="planta-catalogo">
+                    <div class="planta-image">
+                        <img src="https://picsum.photos/300/200?random=26" alt="Alecrim">
+                    </div>
+                    <div class="planta-info">
+                        <h3>Alecrim</h3>
+                        <p><strong>Rega:</strong> 2x por semana</p>
+                        <p><strong>Sol:</strong> 6-8 horas</p>
+                        <p><strong>Colheita:</strong> 90 dias</p>
+                    </div>
+                </div>
+                
+                <div class="planta-catalogo">
+                    <div class="planta-image">
+                        <img src="https://picsum.photos/300/200?random=27" alt="Hortelã">
+                    </div>
+                    <div class="planta-info">
+                        <h3>Hortelã</h3>
+                        <p><strong>Rega:</strong> A cada 2 dias</p>
+                        <p><strong>Sol:</strong> 3-5 horas</p>
+                        <p><strong>Colheita:</strong> 25 dias</p>
+                    </div>
+                </div>
+                
+                <div class="planta-catalogo">
+                    <div class="planta-image">
+                        <img src="https://picsum.photos/300/200?random=28" alt="Salsinha">
+                    </div>
+                    <div class="planta-info">
+                        <h3>Salsinha</h3>
+                        <p><strong>Rega:</strong> A cada 2 dias</p>
+                        <p><strong>Sol:</strong> 4-6 horas</p>
+                        <p><strong>Colheita:</strong> 45 dias</p>
+                    </div>
+                </div>
+                
+                <div class="planta-catalogo">
+                    <div class="planta-image">
+                        <img src="https://picsum.photos/300/200?random=29" alt="Pimenta">
+                    </div>
+                    <div class="planta-info">
+                        <h3>Pimenta</h3>
+                        <p><strong>Rega:</strong> A cada 2 dias</p>
+                        <p><strong>Sol:</strong> 6-8 horas</p>
+                        <p><strong>Colheita:</strong> 80 dias</p>
+                    </div>
+                </div>
+                
+                <div class="planta-catalogo">
+                    <div class="planta-image">
+                        <img src="https://picsum.photos/300/200?random=30" alt="Abóbora">
+                    </div>
+                    <div class="planta-info">
+                        <h3>Abóbora</h3>
+                        <p><strong>Rega:</strong> A cada 2 dias</p>
+                        <p><strong>Sol:</strong> 6-8 horas</p>
+                        <p><strong>Colheita:</strong> 120 dias</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog/Notícias -->
+    <section id="blog" class="section">
+        <div class="container">
+            <h2 class="section-title">Blog / Notícias da Horta</h2>
+            
+            <div class="blog-grid">
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <img src="https://picsum.photos/400/200?random=11" alt="Atualização semanal">
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-date">15 Nov 2025</span>
+                        <h3>Atualização Semanal da Horta</h3>
+                        <p>Esta semana colhemos nossa primeira alface! O João e a Maria ficaram muito animados vendo o resultado do trabalho de semanas...</p>
+                        <a href="#" class="blog-link">Ler mais</a>
+                    </div>
+                </article>
+                
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <img src="https://picsum.photos/400/200?random=12" alt="Dicas de plantio">
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-date">12 Nov 2025</span>
+                        <h3>Dicas de Plantio para Iniciantes</h3>
+                        <p>Aprenda os segredos para começar sua própria horta em casa. Desde a escolha do local até os primeiros cuidados...</p>
+                        <a href="#" class="blog-link">Ler mais</a>
+                    </div>
+                </article>
+                
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <img src="https://picsum.photos/400/200?random=13" alt="Experimentos">
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-date">10 Nov 2025</span>
+                        <h3>Novos Experimentos Científicos</h3>
+                        <p>Estamos testando diferentes tipos de adubo orgânico para ver qual promove melhor crescimento das plantas...</p>
+                        <a href="#" class="blog-link">Ler mais</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Área de Voluntariado -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Área de Voluntariado</h2>
+            
+            <div class="voluntariado-content">
+                <div class="voluntariado-form">
+                    <h3>Inscreva-se para Ajudar</h3>
+                    <form class="form" id="voluntariadoForm">
+                        <div class="form-group">
+                            <label for="nome-voluntario">Nome</label>
+                            <input type="text" id="nome-voluntario" name="nome" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email-voluntario">Email</label>
+                            <input type="email" id="email-voluntario" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="turma-voluntario">Turma</label>
+                            <input type="text" id="turma-voluntario" name="turma" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="funcoes">Funções de Interesse</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="funcoes" value="regar">
+                                    <span class="checkmark"></span>
+                                    Regar
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="funcoes" value="podar">
+                                    <span class="checkmark"></span>
+                                    Podar
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="funcoes" value="ervas">
+                                    <span class="checkmark"></span>
+                                    Tirar Ervas
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="funcoes" value="ferramentas">
+                                    <span class="checkmark"></span>
+                                    Organizar Ferramentas
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="funcoes" value="dados">
+                                    <span class="checkmark"></span>
+                                    Registrar Dados
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="horarios">Horários Preferidos</label>
+                            <select id="horarios" name="horarios" required>
+                                <option value="">Selecione um horário</option>
+                                <option value="matutino">Matutino (7h-12h)</option>
+                                <option value="vespertino">Vespertino (12h-18h)</option>
+                                <option value="sabado">Sábado (8h-12h)</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary">Me Inscrever</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Parcerias -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Parcerias</h2>
+            
+            <div class="parcerias-grid">
+                <div class="parceria-card">
+                    <div class="parceria-logo">SESI</div>
+                    <h3>SESI</h3>
+                    <p>Parceria educacional que fomenta inovação e sustentabilidade</p>
+                </div>
+                
+                <div class="parceria-card">
+                    <div class="parceria-logo">🏭</div>
+                    <h3>Indústrias Parceiras</h3>
+                    <p>Empresas locais que apoiam projetos educativos sustentáveis</p>
+                </div>
+                
+                <div class="parceria-card">
+                    <div class="parceria-logo">🌍</div>
+                    <h3>Projetos Sustentáveis</h3>
+                    <p>Iniciativas ambientais que inspiram nossa horta escolar</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mundo Sustentável -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Mundo Sustentável</h2>
+            
+            <div class="sustentavel-grid">
+                <div class="sustentavel-card" data-tilt>
+                    <div class="sustentavel-icon">
+                        <i data-lucide="droplets"></i>
+                    </div>
+                    <h3>Economia de Água</h3>
+                    <p>Dicas para usar água de forma consciente na horta e em casa</p>
+                </div>
+                
+                <div class="sustentavel-card" data-tilt>
+                    <div class="sustentavel-icon">
+                        <i data-lucide="rotate-ccw"></i>
+                    </div>
+                    <h3>Reaproveitamento</h3>
+                    <p>Transformar materiais descartados em itens úteis para a horta</p>
+                </div>
+                
+                <div class="sustentavel-card" data-tilt>
+                    <div class="sustentavel-icon">
+                        <i data-lucide="recycle"></i>
+                    </div>
+                    <h3>Compostagem Caseira</h3>
+                    <p>Como fazer adubo orgânico com resíduos de cozinha</p>
+                </div>
+                
+                <div class="sustentavel-card" data-tilt>
+                    <div class="sustentavel-icon">
+                        <i data-lucide="home"></i>
+                    </div>
+                    <h3>Plantio Doméstico</h3>
+                    <p>Crie sua própria horta em apartamentos e pequenos espaços</p>
+                </div>
+                
+                <div class="sustentavel-card" data-tilt>
+                    <div class="sustentavel-icon">
+                        <i data-lucide="trash"></i>
+                    </div>
+                    <h3>Redução de Lixo</h3>
+                    <p>Estratégias para minimizar resíduos e maximizar reciclagem</p>
+                </div>
+                
+                <div class="sustentavel-card" data-tilt>
+                    <div class="sustentavel-icon">
+                        <i data-lucide="leaf"></i>
+                    </div>
+                    <h3>Biodiversidade</h3>
+                    <p>Como atrair insetos benéficos e pássaros para a horta</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Faça Você Mesmo -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Faça Você Mesmo</h2>
+            
+            <div class="tutoriais-grid">
+                <div class="tutorial-card">
+                    <div class="tutorial-step">1</div>
+                    <h3>Como Plantar um Tempero em Casa</h3>
+                    <p>Guia passo a passo para começar sua horta de temperos com materiais simples</p>
+                    <button class="btn-secondary">Ver Tutorial</button>
+                </div>
+                
+                <div class="tutorial-card">
+                    <div class="tutorial-step">2</div>
+                    <h3>Como Fazer Compostagem</h3>
+                    <p>Transforme resíduos orgânicos em adubo nutritivo para suas plantas</p>
+                    <button class="btn-secondary">Ver Tutorial</button>
+                </div>
+                
+                <div class="tutorial-card">
+                    <div class="tutorial-step">3</div>
+                    <h3>Como Montar um Canteiro Pequeno</h3>
+                    <p>Aprenda a construir um canteiro eficiente em espaços limitados</p>
+                    <button class="btn-secondary">Ver Tutorial</button>
+                </div>
+                
+                <div class="tutorial-card">
+                    <div class="tutorial-step">4</div>
+                    <h3>Como Germinar Sementes</h3>
+                    <p>Técnicas para germinar sementes com sucesso em casa</p>
+                    <button class="btn-secondary">Ver Tutorial</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Perguntas Frequentes</h2>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>Por que o nome Lavoisier?</h3>
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>O nome Lavoisier é uma homenagem ao químico francês Antoine Lavoisier, conhecido como o "pai da química moderna". Ele descobriu a lei da conservação da massa, fundamental para entender os processos químicos na agricultura e jardinagem.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>Como funciona a horta?</h3>
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>A horta funciona como um laboratório vivo onde os alunos aprendem sobre botânica, química e sustentabilidade na prática. Os estudantes cuidam das plantas, registram dados de crescimento e aprendem sobre os ciclos naturais.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>Posso ajudar na horta?</h3>
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sim! Qualquer aluno pode se voluntariar para ajudar na horta. Temos várias funções como regar, podar, tirar ervas daninhas e registrar dados. Consulte a seção de voluntariado para se inscrever.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>Quanto tempo leva a colheita?</h3>
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>O tempo varia conforme a planta. Folhas como alface e rabanete levam cerca de 30 dias, enquanto frutos como tomate e pimentão podem levar até 90 dias. Consulte nossa seção de tempo de colheita para mais detalhes.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>Quais plantas são mais fáceis?</h3>
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Para iniciantes, recomendamos alface, rabanete, salsinha e cebolinha. Elas crescem rapidamente e são mais tolerantes a erros no cuidado. Temperos como manjericão e hortelã também são ótimas opções.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer id="contato" class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <span class="logo-icon">🌱</span>
+                        <span class="logo-text">Horta Escolar SESI</span>
+                    </div>
+                    <p class="footer-tagline">Da ciência ao solo, do solo ao futuro.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Créditos</h4>
+                    <p>Projeto desenvolvido pelos alunos do SESI</p>
+                    <p>Ano: 2025</p>
+                    <p>Turma: Ensino Médio Integrado</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <p>Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c7afa8b5b3a6e9a2b4a4a8aba6b587b4a2b4aee9a2a3b2e9a5b5">[email&#160;protected]</a></p>
+                    <p>Telefone: (11) 9999-9999</p>
+                    <p>Endereço: SESI - São Paulo</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Siga-nos</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Facebook</a>
+                        <a href="#" class="social-link">Instagram</a>
+                        <a href="#" class="social-link">YouTube</a>
+                    </div>
+                    <div class="qr-code">
+                        <div class="qr-placeholder">
+                            <i data-lucide="qr-code"></i>
+                            <span>Escaneie para acessar pelo celular</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Lavoisier - Horta Escolar SESI. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <div class="lightbox-content" onclick="event.stopPropagation()">
+            <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+            <img id="lightbox-image" src="" alt="">
+            <div id="lightbox-caption"></div>
+        </div>
+    </div>
+
+    <!-- Modal de Login -->
+    <div id="loginModal" class="login-modal">
+        <div class="login-content">
+            <div class="login-header">
+                <h2>Área Administrativa</h2>
+                <button class="close-btn" onclick="closeLogin()">&times;</button>
+            </div>
+            <div class="login-form-container">
+                <form class="login-form" id="loginForm" onsubmit="performLogin(event)">
+                    <div class="form-group">
+                        <label for="adminUser">Usuário</label>
+                        <input type="text" id="adminUser" name="username" required placeholder="Digite seu usuário">
+                    </div>
+                    <div class="form-group">
+                        <label for="adminPassword">Senha</label>
+                        <input type="password" id="adminPassword" name="password" required placeholder="Digite sua senha">
+                    </div>
+                    <button type="submit" class="btn-admin-login">Entrar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Área Administrativa (inicialmente oculta) -->
+    <div id="adminArea" class="admin-area">
+        <div class="admin-container">
+            <div class="admin-header">
+                <h1>Dashboard Administrativo</h1>
+                <button class="btn-admin-logout" onclick="logout()">Sair</button>
+            </div>
+            
+            <div class="admin-nav">
+                <button class="admin-nav-btn active" onclick="showAdminTab('sugestoes')" data-tab="sugestoes">
+                    Sugestões dos Alunos
+                </button>
+                <button class="admin-nav-btn" onclick="showAdminTab('painel')" data-tab="painel">
+                    Painel de Controle
+                </button>
+            </div>
+
+            <!-- Tab: Sugestões -->
+            <div id="admin-sugestoes" class="admin-tab-content active">
+                <h2>Sugestões Recebidas</h2>
+                <div class="suggestions-admin-list">
+                    <div class="admin-suggestion-card">
+                        <div class="suggestion-header">
+                            <span class="suggestion-category">Plantas</span>
+                            <span class="suggestion-status">Pendente</span>
+                        </div>
+                        <h4>João - 3º C</h4>
+                        <p><strong>Sugestão:</strong> Aumentar os canteiros para plantar mais temperos</p>
+                        <p><strong>Data:</strong> 20 Nov 2025</p>
+                        <div class="suggestion-actions">
+                            <button class="btn-approve">Aprovar</button>
+                            <button class="btn-reject">Rejeitar</button>
+                        </div>
+                    </div>
+
+                    <div class="admin-suggestion-card">
+                        <div class="suggestion-header">
+                            <span class="suggestion-category">Cuidados</span>
+                            <span class="suggestion-status">Aprovada</span>
+                        </div>
+                        <h4>Maria - 2º B</h4>
+                        <p><strong>Sugestão:</strong> Instalar regador automático para facilitar a rega</p>
+                        <p><strong>Data:</strong> 19 Nov 2025</p>
+                        <div class="suggestion-actions">
+                            <button class="btn-approved">Aprovada ✓</button>
+                        </div>
+                    </div>
+
+                    <div class="admin-suggestion-card">
+                        <div class="suggestion-header">
+                            <span class="suggestion-category">Estrutura</span>
+                            <span class="suggestion-status">Pendente</span>
+                        </div>
+                        <h4>Pedro - 1º A</h4>
+                        <p><strong>Sugestão:</strong> Criar bancada para organizeer as ferramentas</p>
+                        <p><strong>Data:</strong> 18 Nov 2025</p>
+                        <div class="suggestion-actions">
+                            <button class="btn-approve">Aprovar</button>
+                            <button class="btn-reject">Rejeitar</button>
+                        </div>
+                    </div>
+
+                    <div class="admin-suggestion-card">
+                        <div class="suggestion-header">
+                            <span class="suggestion-category">Plantas</span>
+                            <span class="suggestion-status">Pendente</span>
+                        </div>
+                        <h4>Ana - 3º A</h4>
+                        <p><strong>Sugestão:</strong> Plantar morangos na horta</p>
+                        <p><strong>Data:</strong> 17 Nov 2025</p>
+                        <div class="suggestion-actions">
+                            <button class="btn-approve">Aprovar</button>
+                            <button class="btn-reject">Rejeitar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: Painel de Controle -->
+            <div id="admin-painel" class="admin-tab-content">
+                <h2>Painel de Controle</h2>
+                <div class="admin-stats">
+                    <div class="stat-card">
+                        <h3>Sugestões Totais</h3>
+                        <div class="stat-number stats-total">0</div>
+                        <p>Total de sugestões</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Pendentes</h3>
+                        <div class="stat-number stats-pendentes">0</div>
+                        <p>Para revisão</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Aprovadas</h3>
+                        <div class="stat-number stats-aprovadas">0</div>
+                        <p>Implementadas</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Rejeitadas</h3>
+                        <div class="stat-number stats-rejeitadas">0</div>
+                        <p>Rejeitadas</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="script.js"></script>
+</body>
+</html>
