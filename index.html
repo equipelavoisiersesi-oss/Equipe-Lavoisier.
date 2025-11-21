@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipe Lavoisier SESI - Horta Escolar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Navegação */
+        .navbar {
+            background: #2d5016;
+            padding: 1rem;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #7fb069;
+        }
+
+        /* Admin */
+        .admin-toggle {
+            background: #7fb069;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .admin-toggle:hover {
+            background: #6a9957;
+        }
+
+        /* Seções */
+        .section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #7fb069, #4a7c59);
+            color: white;
+            text-align: center;
+            padding: 8rem 2rem 4rem;
+            margin-top: 80px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            background: white;
+            color: #2d5016;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin: 0.5rem;
+            transition: transform 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background: #d4a574;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #c99665;
+        }
+
+        /* FAQ */
+        .faq-item {
+            margin: 1rem 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .faq-question {
+            background: #f8f9fa;
+            padding: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .faq-question:hover {
+            background: #e9ecef;
+        }
+
+        .faq-answer {
+            padding: 1rem;
+            display: none;
+            border-top: 1px solid #ddd;
+        }
+
+        /* Blog */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .blog-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .blog-link {
+            color: #2d5016;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .blog-link:hover {
+            color: #7fb069;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 2rem;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 600px;
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #999;
+        }
+
+        .close:hover {
+            color: #333;
+        }
+
+        /* Formulário */
+        .form-group {
+            margin: 1rem 0;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        /* Plantas */
+        .plantas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .planta-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .planta-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .planta-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #2d5016;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navegação -->
+    <nav class="navbar">
+        <div class="nav-brand">🌱 Equipe Lavoisier SESI</div>
+        <ul class="nav-menu">
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#plantas">Plantas</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#sugestoes">Sugestões</a></li>
+            <li><a href="#contato">Contato</a></li>
+        </ul>
+        <button class="admin-toggle" onclick="openLogin()">🔧 Admin</button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <h1>🌱 Horta Escolar Lavoisier</h1>
+        <p>Aprendendo sobre sustentabilidade e natureza através da prática</p>
+        <button class="btn" onclick="scrollToSection('sobre')">Conhecer a Horta</button>
+        <button class="btn btn-primary" onclick="scrollToSection('sugestoes')">Enviar Sugestão</button>
+    </section>
+
+    <!-- Sobre -->
+    <section class="section" id="sobre">
+        <h2>Sobre Nossa Horta</h2>
+        <p>A horta da Escola SESI Lavoisier é um projeto educacional inovador que combina aprendizado teórico com prática. Os estudantes aprendem sobre botânica, química, sustentabilidade e responsabilidade ambiental através do cuidado direto com as plantas.</p>
+        <p>Nossa horta inclui uma variedade de hortaliças, ervas aromáticas e flores, proporcionando uma experiência completa de aprendizado sobre ciclos de crescimento, cuidados com plantas e importância da alimentação saudável.</p>
+    </section>
+
+    <!-- Plantas -->
+    <section class="section" id="plantas">
+        <h2>Nossas Plantas</h2>
+        <div class="plantas-grid">
+            <div class="planta-card">
+                <div class="planta-icon">🥬</div>
+                <div class="planta-name">Alface</div>
+                <p>Horta cultivada com cuidado pelos alunos do ensino fundamental.</p>
+            </div>
+            <div class="planta-card">
+                <div class="planta-icon">🫑</div>
+                <div class="planta-name">Pimentão</div>
+                <p>Experimentos com diferentes variedades de pimentão.</p>
+            </div>
+            <div class="planta-card">
+                <div class="planta-icon">🍅</div>
+                <div class="planta-name">Tomate</div>
+                <p>Tomates orgânicos cultivados com adubo natural.</p>
+            </div>
+            <div class="planta-card">
+                <div class="planta-icon">🌿</div>
+                <div class="planta-name">Manjericão</div>
+                <p>Ervas aromáticas para temperos e chás.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog -->
+    <section class="section" id="blog">
+        <h2>Blog da Horta</h2>
+        <div class="blog-grid">
+            <div class="blog-card">
+                <h3>Atualização Semanal da Horta</h3>
+                <p>Esta semana colhemos nossa primeira alface! O João e a Maria ficaram muito animados vendo o resultado do trabalho de semanas...</p>
+                <a href="#" class="blog-link" onclick="openBlogModal('Atualização Semanal da Horta', 'Esta semana colhemos nossa primeira alface! O João e a Maria ficaram muito animados vendo o resultado do trabalho de semanas. Foi um momento de muito aprendizado e satisfação para toda a equipe. Os alunos aprenderam sobre paciência, cuidados constantes e a importância de seguir o processo correto de cultivo. Estamos ansiosos para a próxima colheita!', '15 Nov 2025')">Ler mais</a>
+            </div>
+            <div class="blog-card">
+                <h3>Dicas de Plantio para Iniciantes</h3>
+                <p>Aprenda os segredos para começar sua própria horta em casa. Desde a escolha do local até os primeiros cuidados...</p>
+                <a href="#" class="blog-link" onclick="openBlogModal('Dicas de Plantio para Iniciantes', 'Começar uma horta é mais fácil do que você imagina! Primeiro, escolha um local com boa iluminação solar (pelo menos 6 horas por dia). O solo deve ser bem drenado e rico em matéria orgânica. Para iniciantes, recomendamos começar com plantas como alface, rabanete e manjericão, que são mais resistentes e de crescimento rápido. Lembre-se: regue regularmente, mas evite encharcar o solo!', '12 Nov 2025')">Ler mais</a>
+            </div>
+            <div class="blog-card">
+                <h3>Novos Experimentos Científicos</h3>
+                <p>Estamos testando diferentes tipos de adubo orgânico para ver qual promove melhor crescimento das plantas...</p>
+                <a href="#" class="blog-link" onclick="openBlogModal('Novos Experimentos Científicos', 'Nossa equipe está conduzindo experimentos científicos fascinantes! Estamos comparando diferentes tipos de adubo orgânico: composto caseiro, húmus de minhoca e adubo verde. Cada grupo de alunos cuida de uma seção com um tipo diferente de adubo. Estamos medindo altura, cor das folhas e resistência das plantas semanalmente. Os dados collected serão apresentados na feira de ciências da escola!', '10 Nov 2025')">Ler mais</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+        <h2>Perguntas Frequentes</h2>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <strong>Como funciona a horta?</strong>
+            </div>
+            <div class="faq-answer">
+                <p>A horta funciona como um laboratório vivo onde os alunos aprendem sobre botânica, química e sustentabilidade na prática. Os estudantes cuidam das plantas, registram dados de crescimento e aprendem sobre os ciclos naturais.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <strong>Qual é o objetivo educacional?</strong>
+            </div>
+            <div class="faq-answer">
+                <p>O objetivo é ensinar conceitos científicos de forma prática, desenvolver responsabilidade ambiental e promover alimentação saudável. Os alunos aprendem sobre fotossíntese, ciclos de nutrientes, sustentabilidade e importância da biodiversidade.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <strong>Como os alunos参与em?</strong>
+            </div>
+            <div class="faq-answer">
+                <p>Todos os alunos participation em turnos, cuidando de diferentes áreas da horta. Eles registram observações em diários de campo, medem crescimento das plantas e apresentam resultados para a turma.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <strong>Quais plantas são cultivadas?</strong>
+            </div>
+            <div class="faq-answer">
+                <p>Cultivamos hortaliças (alface, tomate, pimentão), ervas aromáticas (manjericão, hortelã, salsa) e flores comestíveis (calêndula, capuchinha). A seleção varia conforme a época do ano.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <strong>Os produtos são consumidos na escola?</strong>
+            </div>
+            <div class="faq-answer">
+                <p>Sim! Os produtos harvested são utilizados no refeitório escolar, contribuindo para alimentação mais saudável dos alunos. Também organizamos degustações e aulas práticas de culinária.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sugestões -->
+    <section class="section" id="sugestoes">
+        <h2>Envie Sua Sugestão</h2>
+        <form id="sugestaoForm">
+            <div class="form-group">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="sugestao">Sua Sugestão:</label>
+                <textarea id="sugestao" name="sugestao" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar Sugestão</button>
+        </form>
+    </section>
+
+    <!-- Contato -->
+    <section class="section" id="contato">
+        <h2>Contato</h2>
+        <p><strong>Escola SESI Lavoisier</strong></p>
+        <p>Endereço: Rua das Flores, 123 - Centro</p>
+        <p>Telefone: (11) 1234-5678</p>
+        <p>Email: contato@sesilavoisier.edu.br</p>
+    </section>
+
+    <!-- Modal de Login Admin -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeLogin()">&times;</span>
+            <h3>Login Administrativo</h3>
+            <p><strong>Credenciais:</strong> lavoisier / lavoisier123456</p>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="usuario">Usuário:</label>
+                    <input type="text" id="usuario" name="usuario" required>
+                </div>
+                <div class="form-group">
+                    <label for="senha">Senha:</label>
+                    <input type="password" id="senha" name="senha" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Entrar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal do Blog -->
+    <div id="blogModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeBlogModal()">&times;</span>
+            <h3 id="blogModalTitle"></h3>
+            <p><small id="blogModalDate"></small></p>
+            <p id="blogModalContent"></p>
+        </div>
+    </div>
+
+    <script>
+        // Navegação suave
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                const offset = 80;
+                const elementPosition = element.offsetTop - offset;
+                window.scrollTo({
+                    top: elementPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        // FAQ Toggle
+        function toggleFAQ(element) {
+            const faqItem = element.closest('.faq-item');
+            const answer = faqItem.querySelector('.faq-answer');
+            
+            if (answer.style.display === 'block') {
+                answer.style.display = 'none';
+            } else {
+                // Fechar outras FAQs
+                document.querySelectorAll('.faq-answer').forEach(item => {
+                    item.style.display = 'none';
+                });
+                answer.style.display = 'block';
+            }
+        }
+
+        // Modal Admin
+        function openLogin() {
+            document.getElementById('loginModal').style.display = 'block';
+        }
+
+        function closeLogin() {
+            document.getElementById('loginModal').style.display = 'none';
+        }
+
+        // Modal Blog
+        function openBlogModal(title, content, date) {
+            document.getElementById('blogModalTitle').textContent = title;
+            document.getElementById('blogModalDate').textContent = date;
+            document.getElementById('blogModalContent').textContent = content;
+            document.getElementById('blogModal').style.display = 'block';
+        }
+
+        function closeBlogModal() {
+            document.getElementById('blogModal').style.display = 'none';
+        }
+
+        // Fechar modais ao clicar fora
+        window.onclick = function(event) {
+            const loginModal = document.getElementById('loginModal');
+            const blogModal = document.getElementById('blogModal');
+            if (event.target === loginModal) {
+                closeLogin();
+            }
+            if (event.target === blogModal) {
+                closeBlogModal();
+            }
+        }
+
+        // ESC para fechar modais
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeLogin();
+                closeBlogModal();
+            }
+        });
+
+        // Formulários
+        document.getElementById('sugestaoForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Sugestão enviada com sucesso! Obrigado pela sua participação.');
+            this.reset();
+        });
+
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const usuario = document.getElementById('usuario').value;
+            const senha = document.getElementById('senha').value;
+            
+            if (usuario === 'lavoisier' && senha === 'lavoisier123456') {
+                alert('Login realizado com sucesso!');
+                closeLogin();
+                // Aqui você pode adicionar mais funcionalidades admin
+            } else {
+                alert('Usuário ou senha incorretos!');
+            }
+        });
+
+        // Navegação do menu
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                scrollToSection(targetId);
+            });
+        });
+
+        // Scroll suave para links internos
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🌱 Site da Horta Lavoisier carregado com sucesso!');
+        });
+    </script>
+</body>
+</html>
