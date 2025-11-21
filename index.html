@@ -1,0 +1,4672 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horta Escolar SESI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;500;600;700&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<style>
+/* ===== VARIÁVEIS CSS ===== */
+:root {
+  /* Cores */
+  --primary-700: #2d5016;
+  --primary-500: #4a7c59;
+  --primary-300: #7fb069;
+  --accent-500: #d4a574;
+  --accent-700: #8b7355;
+  --neutral-900: #1c1d1f;
+  --neutral-500: #6c757d;
+  --neutral-100: #f8f9fa;
+  --neutral-0: #ffffff;
+  --success: #28a745;
+  --warning: #ffc107;
+  --error: #dc3545;
+
+  /* Typography */
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Open Sans', sans-serif;
+  --font-brand: 'Poppins', sans-serif;
+
+  /* Spacing */
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 32px;
+  --space-xl: 48px;
+  --space-xxl: 64px;
+  --space-xxxl: 96px;
+
+  /* Radius */
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-full: 999px;
+
+  /* Shadows */
+  --shadow-card: 0px 8px 24px rgba(45, 80, 22, 0.08);
+  --shadow-card-hover: 0px 12px 32px rgba(45, 80, 22, 0.12);
+  --shadow-button: 0px 4px 16px rgba(74, 124, 89, 0.25);
+
+  /* Container */
+  --container-max-width: 1280px;
+}
+
+/* ===== RESET E BASE ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--neutral-900);
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  overflow-x: hidden;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(74, 124, 89, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(127, 176, 105, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(212, 165, 116, 0.02) 0%, transparent 50%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* ===== CONTAINER ===== */
+.container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-sm);
+}
+
+/* ===== NAVEGAÇÃO ===== */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  padding: var(--space-sm) 0;
+  transition: all 0.3s ease;
+}
+
+.nav-container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-sm);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-family: var(--font-brand);
+  font-weight: 600;
+  font-size: 24px;
+  color: var(--primary-700);
+  position: relative;
+}
+
+.nav-logo::before {
+  content: '';
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 30px;
+  background: linear-gradient(180deg, var(--primary-300), var(--primary-500));
+  border-radius: 2px;
+}
+
+.logo-icon {
+  font-size: 32px;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: var(--space-lg);
+}
+
+.nav-menu a {
+  text-decoration: none;
+  color: var(--neutral-900);
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-menu a:hover {
+  color: var(--primary-500);
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 4px;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: var(--primary-700);
+  transition: all 0.3s ease;
+}
+
+/* ===== HERO SECTION ===== */
+.hero {
+  height: 100vh;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(127, 176, 105, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(212, 165, 116, 0.1) 0%, transparent 50%),
+    linear-gradient(135deg, var(--primary-700) 0%, var(--primary-500) 50%, var(--primary-700) 100%);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.02) 0%, transparent 25%),
+    radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.02) 0%, transparent 25%);
+  animation: heroPattern 20s ease-in-out infinite alternate;
+}
+
+@keyframes heroPattern {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(20px, -20px) rotate(5deg); }
+}
+
+#particles-js {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.hero-content {
+  max-width: var(--container-max-width);
+  padding: 0 var(--space-sm);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xxl);
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-title {
+  font-family: var(--font-heading);
+  font-size: 72px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--neutral-0);
+  margin-bottom: var(--space-md);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.hero-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-300), var(--accent-500));
+  border-radius: 2px;
+}
+
+.hero-subtitle {
+  font-size: 20px;
+  color: var(--neutral-0);
+  opacity: 0.9;
+  margin-bottom: var(--space-xl);
+}
+
+.hero-buttons {
+  display: flex;
+  gap: var(--space-md);
+}
+
+.btn-primary {
+  height: 56px;
+  padding: 0 var(--space-lg);
+  background: linear-gradient(135deg, var(--primary-500) 0%, var(--primary-700) 100%);
+  color: var(--neutral-0);
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(74, 124, 89, 0.3);
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s ease;
+}
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 15px 35px rgba(74, 124, 89, 0.4);
+}
+
+.btn-secondary {
+  height: 56px;
+  padding: 0 var(--space-lg);
+  background: transparent;
+  color: var(--accent-500);
+  border: 1px solid var(--accent-500);
+  border-radius: var(--radius-md);
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+}
+
+.btn-secondary:hover {
+  background: rgba(212, 165, 116, 0.1);
+  transform: scale(1.03);
+}
+
+.hero-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-distintivo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: float 3s ease-in-out infinite;
+  position: relative;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  padding: 40px;
+}
+
+.hero-distintivo::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  background: conic-gradient(from 0deg, var(--primary-300), var(--accent-500), var(--primary-300), var(--primary-500), var(--accent-500));
+  border-radius: 50%;
+  animation: rotate 4s linear infinite;
+  z-index: -1;
+}
+
+.hero-distintivo::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 30%, rgba(127, 176, 105, 0.3) 50%, transparent 70%);
+  border-radius: 50%;
+  animation: shimmer 2s ease-in-out infinite alternate;
+  z-index: -1;
+}
+
+.distintivo-img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 4px solid var(--neutral-0);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.3),
+    0 0 60px rgba(127, 176, 105, 0.4),
+    inset 0 0 20px rgba(255, 255, 255, 0.1);
+  object-fit: cover;
+  background: transparent;
+  transition: transform 0.3s ease;
+  filter: brightness(1.1) contrast(1.1);
+}
+
+.distintivo-img:hover {
+  transform: scale(1.05) rotate(5deg);
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.4),
+    0 0 80px rgba(127, 176, 105, 0.6),
+    inset 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.hero-badge {
+  position: absolute;
+  bottom: var(--space-xl);
+  right: var(--space-xl);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  color: var(--neutral-0);
+  text-align: center;
+  z-index: 2;
+}
+
+.badge-text {
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.badge-subtitle {
+  display: block;
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+/* ===== SECTIONS ===== */
+.section {
+  padding: var(--space-xxxl) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.section:nth-child(even) {
+  background: linear-gradient(135deg, var(--neutral-0) 0%, #f8f9fa 100%);
+}
+
+.section:nth-child(odd) {
+  background: linear-gradient(135deg, #f8f9fa 0%, var(--neutral-0) 100%);
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--primary-300) 50%, transparent 100%);
+  opacity: 0.3;
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  text-align: center;
+  color: var(--primary-700);
+  margin-bottom: var(--space-xxxl);
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-500), var(--accent-500));
+  border-radius: 2px;
+}
+
+/* ===== SOBRE O PROJETO ===== */
+.sobre-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-xl);
+  margin-bottom: var(--space-xxxl);
+}
+
+.sobre-card {
+  background: var(--neutral-0);
+  padding: var(--space-lg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  text-align: center;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.sobre-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(127, 176, 105, 0.1), transparent);
+  transition: left 0.6s ease;
+}
+
+.sobre-card:hover::before {
+  left: 100%;
+}
+
+.sobre-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 25px 50px rgba(45, 80, 22, 0.15);
+}
+
+.card-icon {
+  font-size: 64px;
+  color: var(--primary-500);
+  margin-bottom: var(--space-md);
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.sobre-card h3 {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: var(--space-md);
+  color: var(--primary-700);
+}
+
+.mvv-section {
+  margin-bottom: var(--space-xxxl);
+}
+
+.mvv-title {
+  font-family: var(--font-heading);
+  font-size: 36px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: var(--space-xl);
+  color: var(--primary-700);
+}
+
+.mvv-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-xl);
+}
+
+.mvv-card {
+  background: var(--neutral-0);
+  padding: var(--space-lg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  text-align: center;
+  transition: transform 0.4s ease;
+  cursor: pointer;
+}
+
+.mvv-card:hover {
+  transform: rotateX(5deg) rotateY(5deg) scale(1.05);
+}
+
+.mvv-icon {
+  font-size: 48px;
+  color: var(--primary-500);
+  margin-bottom: var(--space-md);
+}
+
+.mvv-card h4 {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: var(--space-sm);
+  color: var(--primary-700);
+}
+
+/* ===== TIMELINE ===== */
+.timeline {
+  margin-top: var(--space-xxxl);
+}
+
+.timeline-title {
+  font-family: var(--font-heading);
+  font-size: 36px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: var(--space-xl);
+  color: var(--primary-700);
+}
+
+.timeline-container {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.timeline-container::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, var(--primary-300) 0%, var(--primary-500) 50%, var(--accent-500) 100%);
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.timeline-container::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: -10px;
+  width: 16px;
+  height: 16px;
+  background: var(--accent-500);
+  border-radius: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 0 4px var(--neutral-0);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: var(--space-xl);
+  opacity: 0;
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.timeline-item:nth-child(1) { animation-delay: 0.1s; }
+.timeline-item:nth-child(2) { animation-delay: 0.2s; }
+.timeline-item:nth-child(3) { animation-delay: 0.3s; }
+.timeline-item:nth-child(4) { animation-delay: 0.4s; }
+.timeline-item:nth-child(5) { animation-delay: 0.5s; }
+
+.timeline-item:nth-child(odd) .timeline-content {
+  margin-left: 0;
+  margin-right: calc(50% + var(--space-lg));
+  text-align: right;
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+  margin-left: calc(50% + var(--space-lg));
+  margin-right: 0;
+  text-align: left;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 16px;
+  height: 16px;
+  background: var(--primary-500);
+  border-radius: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.timeline-content {
+  background: var(--neutral-0);
+  padding: var(--space-lg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+.timeline-content h4 {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: var(--space-sm);
+  color: var(--primary-700);
+}
+
+/* ===== FORMULÁRIOS ===== */
+.form {
+  max-width: 500px;
+}
+
+.form-group {
+  margin-bottom: var(--space-md);
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--neutral-900);
+  margin-bottom: var(--space-xs);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  height: 52px;
+  padding: 0 var(--space-sm);
+  background: var(--neutral-0);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius-md);
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.form-group textarea {
+  height: auto;
+  padding: var(--space-sm);
+  resize: vertical;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary-500);
+  box-shadow: 0 0 0 3px rgba(74, 124, 89, 0.2);
+}
+
+.checkbox-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--space-sm);
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: auto;
+  height: auto;
+}
+
+.checkmark {
+  position: relative;
+}
+
+/* ===== SUGESTÕES ===== */
+.sugestoes-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xxl);
+}
+
+.sugestoes-form h3,
+.sugestoes-aprovadas h3 {
+  font-family: var(--font-heading);
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: var(--space-lg);
+  color: var(--primary-700);
+}
+
+.suggestions-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.suggestion-card {
+  background: var(--neutral-0);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  border-left: 4px solid var(--primary-300);
+  box-shadow: var(--shadow-card);
+  transition: transform 0.3s ease;
+}
+
+.suggestion-card:hover {
+  transform: translateX(5px);
+}
+
+.suggestion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-sm);
+}
+
+.suggestion-category {
+  background: var(--primary-300);
+  color: var(--neutral-0);
+  padding: 4px var(--space-sm);
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.suggestion-votes {
+  font-size: 14px;
+  color: var(--neutral-500);
+}
+
+.suggestion-card h4 {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: var(--space-xs);
+  color: var(--primary-700);
+}
+
+.suggestion-card p {
+  margin-bottom: var(--space-sm);
+}
+
+.suggestion-author {
+  font-size: 14px;
+  color: var(--neutral-500);
+  font-style: italic;
+}
+
+/* ===== TEMPO DE COLHEITAS ===== */
+.colheitas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-lg);
+  margin-bottom: var(--space-xxxl);
+}
+
+.planta-card {
+  background: var(--neutral-0);
+  padding: var(--space-lg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.planta-card:hover {
+  transform: translateY(-5px);
+}
+
+.planta-icon {
+  font-size: 48px;
+  margin-bottom: var(--space-md);
+}
+
+.planta-card h3 {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: var(--space-md);
+  color: var(--primary-700);
+}
+
+.planta-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.tempo {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--primary-500);
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: var(--neutral-100);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-300), var(--primary-500));
+  border-radius: var(--radius-full);
+  width: 0%;
+  transition: width 1s ease;
+}
+
+/* ===== GRÁFICO ===== */
+.crescimento-chart {
+  background: var(--neutral-0);
+  padding: var(--space-lg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  margin-top: var(--space-xxxl);
+}
+
+.crescimento-chart h3 {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: var(--space-lg);
+  color: var(--primary-700);
+}
+
+/* ===== GALERIA ===== */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-md);
+}
+
+.gallery-item {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, var(--primary-500), var(--accent-500));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.gallery-item::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.4s ease;
+  z-index: 2;
+}
+
+.gallery-item:hover::before {
+  opacity: 0.8;
+}
+
+.gallery-item:hover::after {
+  width: 100px;
+  height: 100px;
+}
+
+.gallery-item:hover {
+  transform: translateY(-10px) rotate(2deg);
+  box-shadow: 0 25px 50px rgba(45, 80, 22, 0.3);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.1);
+}
+
+.gallery-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(28, 29, 31, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  color: var(--neutral-0);
+}
+
+.gallery-item:hover .gallery-overlay {
+  opacity: 1;
+}
+
+.gallery-overlay i {
+  font-size: 32px;
+  margin-bottom: var(--space-sm);
+}
+
+/* ===== PAINEL DE CRESCIMENTO ===== */
+.painel-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-lg);
+}
+
+.painel-card {
+  background: var(--neutral-0);
+  padding: var(--space-lg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.painel-card:hover {
+  transform: translateY(-5px);
+}
+
+.painel-icon {
+  font-size: 48px;
+  color: var(--primary-500);
+  margin-bottom: var(--space-md);
+}
+
+.painel-card h3 {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: var(--space-md);
+  color: var(--primary-700);
+}
+
+.metric-value {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--primary-500);
+  margin-bottom: var(--space-xs);
+}
+
+.metric-change {
+  font-size: 14px;
+  color: var(--neutral-500);
+}
+
+/* ===== CIÊNCIA NA HORTA ===== */
+.ciencia-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-lg);
+}
+
+.ciencia-card {
+  background: var(--neutral-0);
+  padding: var(--space-lg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  text-align: center;
+  transition: transform 0.4s ease;
+  cursor: pointer;
+}
+
+.ciencia-card:hover {
+  transform: rotateX(5deg) rotateY(5deg) scale(1.05);
+}
+
+.ciencia-icon {
+  background: var(--primary-300);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--space-md);
+}
+
+.ciencia-icon .icon {
+  font-size: 32px;
+  color: var(--neutral-0);
+}
+
+.ciencia-card h3 {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: var(--space-sm);
+  color: var(--primary-700);
+}
+
+/* ===== CATÁLOGO DE PLANTAS ===== */
+.catalogo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-lg);
+}
+
+.planta-catalogo {
+  background: var(--neutral-0);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.3s ease;
+}
+
+.planta-catalogo:hover {
+  transform: translateY(-5px);
+}
+
+.planta-image img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.planta-info {
+  padding: var(--space-md);
+}
+
+.planta-info h3 {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: var(--space-sm);
+  color: var(--primary-700);
+}
+
+.planta-info p {
+  margin-bottom: var(--space-xs);
+  font-size: 14px;
+}
+
+/* ===== BLOG ===== */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: var(--space-lg);
+}
+
+.blog-card {
+  background: var(--neutral-0);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+.blog-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-500), var(--accent-500));
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+  z-index: 2;
+}
+
+.blog-card:hover::before {
+  transform: scaleX(1);
+}
+
+.blog-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 25px 50px rgba(45, 80, 22, 0.15);
+}
+
+.blog-image img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.blog-card:hover .blog-image img {
+  transform: scale(1.05);
+}
+
+.blog-content {
+  padding: var(--space-lg);
+}
+
+.blog-date {
+  font-size: 14px;
+  color: var(--neutral-500);
+  font-weight: 500;
+}
+
+.blog-content h3 {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 600;
+  margin: var(--space-sm) 0;
+  color: var(--primary-700);
+}
+
+.blog-content p {
+  margin-bottom: var(--space-md);
+  color: var(--neutral-500);
+}
+
+.blog-link {
+  color: var(--primary-500);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.blog-link:hover {
+  color: var(--primary-700);
+}
+
+/* ===== PARCERIAS ===== */
+.parcerias-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-lg);
+}
+
+.parceria-card {
+  background: var(--neutral-0);
+  padding: var(--space-lg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.parceria-card:hover {
+  transform: translateY(-5px);
+}
+
+.parceria-logo {
+  font-size: 48px;
+  margin-bottom: var(--space-md);
+}
+
+.parceria-card h3 {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: var(--space-sm);
+  color: var(--primary-700);
+}
+
+/* ===== MUNDO SUSTENTÁVEL ===== */
+.sustentavel-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-lg);
+}
+
+.sustentavel-card {
+  background: var(--neutral-0);
+  padding: var(--space-lg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  text-align: center;
+  transition: transform 0.4s ease;
+  cursor: pointer;
+}
+
+.sustentavel-card:hover {
+  transform: rotateX(5deg) rotateY(5deg) scale(1.05);
+}
+
+.sustentavel-icon {
+  background: var(--accent-500);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--space-md);
+}
+
+.sustentavel-icon i {
+  font-size: 32px;
+  color: var(--neutral-0);
+}
+
+.sustentavel-card h3 {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: var(--space-sm);
+  color: var(--primary-700);
+}
+
+/* ===== TUTORIAIS ===== */
+.tutoriais-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-lg);
+}
+
+.tutorial-card {
+  background: var(--neutral-0);
+  padding: var(--space-lg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  transition: transform 0.3s ease;
+}
+
+.tutorial-card:hover {
+  transform: translateY(-5px);
+}
+
+.tutorial-step {
+  background: var(--primary-500);
+  color: var(--neutral-0);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  margin-bottom: var(--space-md);
+}
+
+.tutorial-card h3 {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: var(--space-sm);
+  color: var(--primary-700);
+}
+
+.tutorial-card p {
+  margin-bottom: var(--space-md);
+  color: var(--neutral-500);
+}
+
+/* ===== FAQ ===== */
+.faq-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  background: var(--neutral-0);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-sm);
+  box-shadow: var(--shadow-card);
+}
+
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-lg);
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.faq-question:hover {
+  background: var(--neutral-100);
+}
+
+.faq-question h3 {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--primary-700);
+}
+
+.faq-icon {
+  transition: transform 0.3s ease;
+  color: var(--primary-500);
+}
+
+.faq-item.active .faq-icon {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  padding: 0 var(--space-lg);
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.faq-item.active .faq-answer {
+  padding: 0 var(--space-lg) var(--space-lg);
+  max-height: 200px;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  background: linear-gradient(135deg, var(--primary-700) 0%, var(--primary-500) 100%);
+  color: var(--neutral-0);
+  padding: var(--space-xxxl) 0 var(--space-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 20% 20%, rgba(127, 176, 105, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(212, 165, 116, 0.1) 0%, transparent 50%);
+  z-index: 0;
+}
+
+.footer > * {
+  position: relative;
+  z-index: 1;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-xl);
+  margin-bottom: var(--space-xl);
+}
+
+.footer-section h4 {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: var(--space-md);
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-family: var(--font-brand);
+  font-weight: 600;
+  font-size: 24px;
+  margin-bottom: var(--space-md);
+  position: relative;
+}
+
+.footer-logo::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary-300), var(--accent-500));
+  border-radius: 1px;
+}
+
+.footer-tagline {
+  font-style: italic;
+  opacity: 0.9;
+}
+
+.footer-section p {
+  margin-bottom: var(--space-xs);
+  opacity: 0.9;
+}
+
+.social-links {
+  display: flex;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+.social-link {
+  color: var(--neutral-0);
+  text-decoration: none;
+  padding: var(--space-xs) var(--space-sm);
+  border: 1px solid var(--neutral-0);
+  border-radius: var(--radius-full);
+  transition: all 0.3s ease;
+}
+
+.social-link:hover {
+  background: var(--neutral-0);
+  color: var(--primary-700);
+}
+
+.qr-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-sm);
+  border: 2px dashed rgba(255, 255, 255, 0.3);
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+
+.qr-placeholder i {
+  font-size: 48px;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: var(--space-lg);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  opacity: 0.8;
+}
+
+/* ===== LIGHTBOX ===== */
+.lightbox {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 9999;
+  cursor: pointer;
+}
+
+.lightbox-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 90%;
+  max-height: 90%;
+  text-align: center;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 32px;
+  cursor: pointer;
+  padding: var(--space-xs);
+}
+
+.lightbox img {
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+}
+
+#lightbox-caption {
+  color: white;
+  margin-top: var(--space-sm);
+  font-size: 18px;
+}
+
+/* ===== ADMIN MENU ===== */
+.admin-menu {
+  position: relative;
+  margin-left: var(--space-sm);
+}
+
+.admin-toggle {
+  background: none;
+  border: none;
+  color: var(--primary-700);
+  font-size: 24px;
+  cursor: pointer;
+  padding: var(--space-xs);
+  border-radius: var(--radius-sm);
+  transition: all 0.3s ease;
+}
+
+.admin-toggle:hover {
+  background: rgba(127, 176, 105, 0.1);
+  transform: scale(1.1);
+}
+
+.admin-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: var(--neutral-0);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card-hover);
+  padding: var(--space-sm);
+  min-width: 200px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.admin-dropdown.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.admin-dropdown a {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  color: var(--neutral-900);
+  text-decoration: none;
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  transition: background 0.3s ease;
+}
+
+.admin-dropdown a:hover {
+  background: rgba(127, 176, 105, 0.1);
+}
+
+/* ===== LOGIN MODAL ===== */
+.login-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-modal.show {
+  display: flex;
+  animation: modalFadeIn 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.login-content {
+  background: var(--neutral-0);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+  from { 
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to { 
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.login-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--neutral-100);
+}
+
+.login-header h2 {
+  color: var(--primary-700);
+  font-family: var(--font-heading);
+  font-size: 24px;
+  margin: 0;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: var(--neutral-500);
+  font-size: 28px;
+  cursor: pointer;
+  padding: var(--space-xs);
+  border-radius: var(--radius-sm);
+  transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+  color: var(--error);
+}
+
+.login-form .form-group {
+  margin-bottom: var(--space-md);
+}
+
+.login-form label {
+  display: block;
+  color: var(--neutral-900);
+  font-weight: 500;
+  margin-bottom: var(--space-xs);
+}
+
+.login-form input {
+  width: 100%;
+  padding: var(--space-sm);
+  border: 2px solid var(--neutral-100);
+  border-radius: var(--radius-md);
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.login-form input:focus {
+  outline: none;
+  border-color: var(--primary-500);
+}
+
+.btn-admin-login {
+  width: 100%;
+  background: linear-gradient(135deg, var(--primary-700), var(--primary-500));
+  color: var(--neutral-0);
+  border: none;
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: var(--space-sm);
+}
+
+.btn-admin-login:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(74, 124, 89, 0.3);
+}
+
+/* ===== ÁREA ADMINISTRATIVA ===== */
+.admin-area {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--neutral-100);
+  z-index: 1500;
+  overflow-y: auto;
+  display: none;
+}
+
+.admin-area.show {
+  display: block;
+  animation: adminFadeIn 0.5s ease;
+}
+
+@keyframes adminFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.admin-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-xl);
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-xl);
+  padding-bottom: var(--space-md);
+  border-bottom: 2px solid var(--primary-300);
+}
+
+.admin-header h1 {
+  color: var(--primary-700);
+  font-family: var(--font-heading);
+  font-size: 32px;
+  margin: 0;
+}
+
+.btn-admin-logout {
+  background: var(--error);
+  color: var(--neutral-0);
+  border: none;
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-admin-logout:hover {
+  background: #c82333;
+  transform: translateY(-2px);
+}
+
+.admin-nav {
+  display: flex;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-xl);
+}
+
+.admin-nav-btn {
+  background: var(--neutral-0);
+  color: var(--neutral-700);
+  border: 2px solid var(--neutral-200);
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--radius-md);
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.admin-nav-btn:hover,
+.admin-nav-btn.active {
+  background: var(--primary-500);
+  color: var(--neutral-0);
+  border-color: var(--primary-500);
+  transform: translateY(-2px);
+}
+
+.admin-tab-content {
+  display: none;
+}
+
+.admin-tab-content.active {
+  display: block;
+  animation: tabFadeIn 0.4s ease;
+}
+
+@keyframes tabFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.admin-tab-content h2 {
+  color: var(--primary-700);
+  font-family: var(--font-heading);
+  font-size: 28px;
+  margin-bottom: var(--space-lg);
+}
+
+.suggestions-admin-list {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.admin-suggestion-card {
+  background: var(--neutral-0);
+  padding: var(--space-lg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  transition: transform 0.3s ease;
+}
+
+.admin-suggestion-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.suggestion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-sm);
+}
+
+.suggestion-category {
+  background: var(--primary-300);
+  color: var(--neutral-0);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.suggestion-status {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.suggestion-status.Pendente {
+  color: var(--warning);
+}
+
+.suggestion-status.Aprovada {
+  color: var(--success);
+}
+
+.admin-suggestion-card h4 {
+  color: var(--primary-700);
+  font-size: 18px;
+  margin-bottom: var(--space-sm);
+}
+
+.admin-suggestion-card p {
+  margin-bottom: var(--space-xs);
+  color: var(--neutral-700);
+}
+
+.suggestion-actions {
+  display: flex;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+}
+
+.btn-approve {
+  background: var(--success);
+  color: var(--neutral-0);
+  border: none;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-reject {
+  background: var(--error);
+  color: var(--neutral-0);
+  border: none;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-approved {
+  background: var(--success);
+  color: var(--neutral-0);
+  border: none;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+}
+
+.btn-approve:hover,
+.btn-reject:hover {
+  transform: scale(1.05);
+}
+
+.btn-delete {
+  background: var(--neutral-500);
+  color: var(--neutral-0);
+  border: none;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-delete:hover {
+  background: var(--error);
+  transform: scale(1.05);
+}
+
+.no-suggestions {
+  text-align: center;
+  color: var(--neutral-500);
+  font-style: italic;
+  padding: var(--space-xl);
+  background: var(--neutral-0);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+}
+
+.suggestion-date {
+  font-size: 12px;
+  color: var(--neutral-500);
+  font-weight: 500;
+}
+
+.suggestion-info {
+  background: var(--neutral-100);
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-sm);
+}
+
+.suggestion-info p {
+  margin-bottom: var(--space-xs);
+  font-size: 14px;
+}
+
+.suggestion-content {
+  border-left: 3px solid var(--primary-300);
+  padding-left: var(--space-sm);
+  margin: var(--space-sm) 0;
+}
+
+.admin-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-lg);
+  margin-top: var(--space-xl);
+}
+
+.stat-card {
+  background: var(--neutral-0);
+  padding: var(--space-xl);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+}
+
+.stat-card h3 {
+  color: var(--primary-700);
+  font-size: 18px;
+  margin-bottom: var(--space-md);
+}
+
+.stat-number {
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--primary-500);
+  margin-bottom: var(--space-sm);
+}
+
+.stat-card p {
+  color: var(--neutral-600);
+  font-size: 14px;
+}
+
+/* ===== ANIMAÇÕES ===== */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes shimmer {
+  0% { opacity: 0.3; }
+  100% { opacity: 0.8; }
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 1024px) {
+  .hero-title {
+    font-size: 48px;
+  }
+  
+  .section-title {
+    font-size: 36px;
+  }
+  
+  .hero-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: var(--space-xl);
+  }
+  
+  .sugestoes-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --space-xxxl: 64px;
+    --space-xxl: 48px;
+  }
+  
+  .hamburger {
+    display: flex;
+  }
+  
+  .nav-menu {
+    display: none;
+  }
+  
+  .hero-title {
+    font-size: 36px;
+  }
+  
+  .hero-subtitle {
+    font-size: 18px;
+  }
+  
+  .section-title {
+    font-size: 28px;
+  }
+  
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  /* Login Modal responsivo */
+  .login-content {
+    padding: var(--space-lg);
+    margin: var(--space-md);
+  }
+  
+  .login-header h2 {
+    font-size: 20px;
+  }
+  
+  .admin-header h1 {
+    font-size: 24px;
+  }
+  
+  .admin-nav {
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+  
+  .admin-nav-btn {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .admin-container {
+    padding: var(--space-md);
+  }
+  
+  .suggestions-admin-list {
+    grid-template-columns: 1fr;
+  }
+  
+  .suggestion-actions {
+    flex-direction: column;
+  }
+  
+  .btn-approve,
+  .btn-reject {
+    width: 100%;
+  }
+  
+  .admin-stats {
+    grid-template-columns: 1fr;
+  }
+  
+  .admin-menu {
+    margin-left: var(--space-xs);
+  }
+  
+  .distintivo-img {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .hero-distintivo {
+    padding: 30px;
+  }
+  
+  .mvv-grid,
+  .ciencia-grid,
+  .sustentavel-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .timeline-container::before {
+    left: 20px;
+  }
+  
+  .timeline-item:nth-child(odd) .timeline-content,
+  .timeline-item:nth-child(even) .timeline-content {
+    margin-left: 60px;
+    margin-right: 0;
+    text-align: left;
+  }
+  
+  .timeline-dot {
+    left: 20px;
+  }
+  
+  .checkbox-group {
+    grid-template-columns: 1fr;
+  }
+  
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+  
+  .footer-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 var(--space-sm);
+  }
+  
+  .hero-title {
+    font-size: 28px;
+  }
+  
+  .section-title {
+    font-size: 24px;
+  }
+  
+  .colheitas-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .painel-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .blog-grid,
+  .catalogo-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  /* Login responsivo para telas muito pequenas */
+  .login-content {
+    margin: var(--space-sm);
+    padding: var(--space-md);
+  }
+  
+  .admin-header {
+    flex-direction: column;
+    gap: var(--space-md);
+    text-align: center;
+  }
+  
+  .admin-header h1 {
+    font-size: 20px;
+  }
+  
+  .admin-container {
+    padding: var(--space-sm);
+  }
+  
+  .admin-suggestion-card {
+    padding: var(--space-md);
+  }
+  
+  .stat-card {
+    padding: var(--space-lg);
+  }
+  
+  .stat-number {
+    font-size: 32px;
+  }
+  
+  .distintivo-img {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .hero-distintivo {
+    padding: 20px;
+  }
+}
+
+/* ===== ACESSIBILIDADE ===== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .floating-card {
+    animation: none;
+  }
+  
+  .timeline-item {
+    animation: none;
+  }
+  
+  .mvv-card,
+  .ciencia-card,
+  .sustentavel-card {
+    transform: none !important;
+  }
+  
+  .mvv-card:hover,
+  .ciencia-card:hover,
+  .sustentavel-card:hover {
+    transform: translateY(-5px) !important;
+  }
+}
+
+/* ===== FOCUS STATES ===== */
+button:focus,
+input:focus,
+select:focus,
+textarea:focus,
+a:focus {
+  outline: 2px solid var(--primary-500);
+  outline-offset: 2px;
+}
+
+/* ===== SCROLL TO TOP ===== */
+.scroll-to-top {
+  position: fixed;
+  bottom: var(--space-lg);
+  right: var(--space-lg);
+  background: var(--primary-500);
+  color: var(--neutral-0);
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.scroll-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.scroll-to-top:hover {
+  background: var(--primary-700);
+  transform: translateY(-3px);
+}
+
+/* ===== LOADING STATES ===== */
+.loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--primary-300);
+  border-top: 2px solid var(--primary-500);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* ===== DESTAQUE DE SEÇÃO ===== */
+.section-highlight {
+  position: relative;
+  animation: sectionPulse 2s ease-in-out;
+}
+
+.section-highlight::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(127, 176, 105, 0.1);
+  border: 2px solid var(--primary-300);
+  border-radius: var(--radius-lg);
+  z-index: -1;
+}
+
+@keyframes sectionPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.01); }
+}
+
+/* ===== CARREGAMENTO COMPLETO ===== */
+body.loaded .hero {
+  animation: heroFadeIn 1s ease-out;
+}
+
+@keyframes heroFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>
+</head>
+<body>
+    <!-- Particle Background -->
+    <div id="particles-js"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">Horta Escolar</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#horta">Horta</a></li>
+                <li><a href="#galeria">Galeria</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <!-- Menu de 3 pontos para área administrativa -->
+            <div class="admin-menu" id="adminMenu">
+                <button class="admin-toggle" onclick="toggleAdminMenu()">
+                    <span class="admin-dots">⋮⋮⋮</span>
+                </button>
+                <div class="admin-dropdown" id="adminDropdown">
+                    <a href="#" onclick="openLogin()">
+                        <i data-lucide="user"></i>
+                        Área Administrativa
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">Horta Escolar SESI</h1>
+                <p class="hero-subtitle">Transformando ciência em sustentabilidade</p>
+                <div class="hero-buttons">
+                    <button class="btn-primary" onclick="scrollToSection('sobre')">
+                        Conhecer a Horta
+                    </button>
+                    <button class="btn-secondary" onclick="scrollToSection('sugestoes')">
+                        Enviar Sugestão
+                    </button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-distintivo">
+                    <img src="https://raw.githubusercontent.com/equipe-lavoisier/horta-escolar/main/7690bce4-dd12-4f53-8580-10609c76fe73.png" alt="Logo Equipe Lavoisier" class="distintivo-img">
+                </div>
+            </div>
+        </div>
+        <div class="hero-badge">
+            <span class="badge-text">Projeto Escolar SESI</span>
+            <span class="badge-subtitle">Referência na Indústria</span>
+        </div>
+    </section>
+
+    <!-- Sobre o Projeto -->
+    <section id="sobre" class="section">
+        <div class="container">
+            <h2 class="section-title">Sobre o Projeto</h2>
+            
+            <div class="sobre-grid">
+                <div class="sobre-card">
+                    <i data-lucide="microscope" class="card-icon"></i>
+                    <h3>O que é o Projeto</h3>
+                    <p>A horta escolar Lavoisier é um projeto educativo que une ciência, sustentabilidade e agricultura urbana, formando estudantes conscientes sobre o meio ambiente.</p>
+                </div>
+                
+                <div class="sobre-card">
+                    <i data-lucide="factory" class="card-icon"></i>
+                    <h3>Conexão com o SESI</h3>
+                    <p>O projeto segue os princípios de inovação, ciência, sustentabilidade e competência industrial do SESI, formando futuros profissionais conscientes.</p>
+                </div>
+            </div>
+
+            <!-- Missão, Visão e Valores -->
+            <div class="mvv-section">
+                <h3 class="mvv-title">Missão, Visão e Valores</h3>
+                <div class="mvv-grid">
+                    <div class="mvv-card" data-tilt>
+                        <i data-lucide="target" class="mvv-icon"></i>
+                        <h4>Missão</h4>
+                        <p>Aprender pela prática, conectando teoria científica com aplicação real na agricultura urbana</p>
+                    </div>
+                    <div class="mvv-card" data-tilt>
+                        <i data-lucide="eye" class="mvv-icon"></i>
+                        <h4>Visão</h4>
+                        <p>Formar estudantes conscientes sobre sustentabilidade e ciência aplicada ao cotidiano</p>
+                    </div>
+                    <div class="mvv-card" data-tilt>
+                        <i data-lucide="heart" class="mvv-icon"></i>
+                        <h4>Valores</h4>
+                        <p>Respeito, cuidado ambiental, responsabilidade e inovação sustentável</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Linha do Tempo -->
+            <div class="timeline">
+                <h3 class="timeline-title">Linha do Tempo da Horta</h3>
+                <div class="timeline-container">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4>Fundação</h4>
+                            <p>Início do projeto e primeira planejamento</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4>Primeira Plantação</h4>
+                            <p>Plantio das primeiras mudas de alface e tomate</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4>Primeira Colheita</h4>
+                            <p>Celebração da primeira colheita de sucesso</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4>Novos Canteiros</h4>
+                            <p>Expansão para novos tipos de plantas e temperos</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4>Meta Futura</h4>
+                            <p>Implementar sistema de compostagem e irrigação automática</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sugestões dos Alunos -->
+    <section id="sugestoes" class="section">
+        <div class="container">
+            <h2 class="section-title">Sugestões dos Alunos</h2>
+            
+            <div class="sugestoes-content">
+                <div class="sugestoes-form">
+                    <h3>Envie sua Sugestão</h3>
+                    <form class="form" id="sugestaoForm">
+                        <div class="form-group">
+                            <label for="nome">Nome</label>
+                            <input type="text" id="nome" name="nome" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="turma">Turma</label>
+                            <input type="text" id="turma" name="turma" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="categoria">Categoria da Sugestão</label>
+                            <select id="categoria" name="categoria" required>
+                                <option value="">Selecione uma categoria</option>
+                                <option value="plantas">Plantas</option>
+                                <option value="estrutura">Estrutura</option>
+                                <option value="cuidados">Cuidados</option>
+                                <option value="ideias">Ideias Criativas</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="planta-sugestao">Sugestão de nova planta para cultivo</label>
+                            <textarea id="planta-sugestao" name="planta-sugestao" rows="3" placeholder="Que planta você acha que deveríamos adicionar à horta? Por quê?"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="sugestao">Sua Sugestão</label>
+                            <textarea id="sugestao" name="sugestao" rows="4" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary">Enviar Sugestão</button>
+                    </form>
+                </div>
+                
+                <div class="sugestoes-aprovadas">
+                    <h3>Sugestões Aprovadas</h3>
+                    <div class="suggestions-grid">
+                        <div class="suggestion-card">
+                            <div class="suggestion-header">
+                                <span class="suggestion-category">Plantas</span>
+                                <span class="suggestion-votes">12 votos</span>
+                            </div>
+                            <h4>Cultivo de Manjericão</h4>
+                            <p>Perfeito para temperos e muito fácil de cuidar</p>
+                            <div class="suggestion-author">Por João - 3º C</div>
+                        </div>
+                        
+                        <div class="suggestion-card">
+                            <div class="suggestion-header">
+                                <span class="suggestion-category">Estrutura</span>
+                                <span class="suggestion-votes">8 votos</span>
+                            </div>
+                            <h4>Sistema de Irrigação</h4>
+                            <p>Para facilitar a rega automática das plantas</p>
+                            <div class="suggestion-author">Por Maria - 2º B</div>
+                        </div>
+                        
+                        <div class="suggestion-card">
+                            <div class="suggestion-header">
+                                <span class="suggestion-category">Ideias</span>
+                                <span class="suggestion-votes">15 votos</span>
+                            </div>
+                            <h4>Horta Suspensa</h4>
+                            <p>Usar o espaço vertical para mais plantas</p>
+                            <div class="suggestion-author">Por Pedro - 1º A</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tempo de Colheitas -->
+    <section id="horta" class="section">
+        <div class="container">
+            <h2 class="section-title">Tempo de Colheitas</h2>
+            
+            <div class="colheitas-grid">
+                <div class="planta-card" data-plant="alface">
+                    <div class="planta-icon">🥬</div>
+                    <h3>Alface</h3>
+                    <div class="planta-info">
+                        <span class="tempo">30 dias</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-progress="100"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="planta-card" data-plant="cenoura">
+                    <div class="planta-icon">🥕</div>
+                    <h3>Cenoura</h3>
+                    <div class="planta-info">
+                        <span class="tempo">80 dias</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-progress="60"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="planta-card" data-plant="tomate">
+                    <div class="planta-icon">🍅</div>
+                    <h3>Tomate</h3>
+                    <div class="planta-info">
+                        <span class="tempo">70 dias</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-progress="75"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="planta-card" data-plant="salsinha">
+                    <div class="planta-icon">🌿</div>
+                    <h3>Salsinha</h3>
+                    <div class="planta-info">
+                        <span class="tempo">45 dias</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-progress="90"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="planta-card" data-plant="manjericao">
+                    <div class="planta-icon">🌱</div>
+                    <h3>Manjericão</h3>
+                    <div class="planta-info">
+                        <span class="tempo">25 dias</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-progress="95"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="planta-card" data-plant="cebolinha">
+                    <div class="planta-icon">🧅</div>
+                    <h3>Cebolinha</h3>
+                    <div class="planta-info">
+                        <span class="tempo">35 dias</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-progress="85"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="planta-card" data-plant="pimentao">
+                    <div class="planta-icon">🫑</div>
+                    <h3>Pimentão</h3>
+                    <div class="planta-info">
+                        <span class="tempo">90 dias</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-progress="45"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="planta-card" data-plant="rabanete">
+                    <div class="planta-icon">🟣</div>
+                    <h3>Rabanete</h3>
+                    <div class="planta-info">
+                        <span class="tempo">28 dias</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-progress="100"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gráfico de Crescimento -->
+            <div class="crescimento-chart">
+                <h3>Crescimento por Semana</h3>
+                <canvas id="growthChart" width="800" height="400"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeria da Horta -->
+    <section id="galeria" class="section">
+        <div class="container">
+            <h2 class="section-title">Galeria da Horta</h2>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://picsum.photos/400/300?random=1" alt="Alunos cuidando da horta">
+                    <div class="gallery-overlay">
+                        <i data-lucide="camera"></i>
+                        <span>Alunos Cuidando</span>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://picsum.photos/400/300?random=2" alt="Mudas de plantas">
+                    <div class="gallery-overlay">
+                        <i data-lucide="camera"></i>
+                        <span>Mudas</span>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://picsum.photos/400/300?random=3" alt="Sistema de irrigação">
+                    <div class="gallery-overlay">
+                        <i data-lucide="camera"></i>
+                        <span>Irrigação</span>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://picsum.photos/400/300?random=4" alt="Primeira colheita">
+                    <div class="gallery-overlay">
+                        <i data-lucide="camera"></i>
+                        <span>Primeira Colheita</span>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://picsum.photos/400/300?random=5" alt="Sementes">
+                    <div class="gallery-overlay">
+                        <i data-lucide="camera"></i>
+                        <span>Sementes</span>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://picsum.photos/400/300?random=6" alt="Ferramentas da horta">
+                    <div class="gallery-overlay">
+                        <i data-lucide="camera"></i>
+                        <span>Ferramentas</span>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://picsum.photos/400/300?random=7" alt="Canteiros organizados">
+                    <div class="gallery-overlay">
+                        <i data-lucide="camera"></i>
+                        <span>Canteiros</span>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://picsum.photos/400/300?random=8" alt="Fazendo compostagem">
+                    <div class="gallery-overlay">
+                        <i data-lucide="camera"></i>
+                        <span>Compostagem</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Painel de Crescimento -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Painel de Crescimento</h2>
+            
+            <div class="painel-grid">
+                <div class="painel-card">
+                    <i data-lucide="trending-up" class="painel-icon"></i>
+                    <h3>Altura Média</h3>
+                    <div class="metric-value">25 cm</div>
+                    <div class="metric-change">+5cm esta semana</div>
+                </div>
+                
+                <div class="painel-card">
+                    <i data-lucide="droplets" class="painel-icon"></i>
+                    <h3>Umidade do Solo</h3>
+                    <div class="metric-value">65%</div>
+                    <div class="metric-change">Ideal para crescimento</div>
+                </div>
+                
+                <div class="painel-card">
+                    <i data-lucide="bag" class="painel-icon"></i>
+                    <h3>Adubo Utilizado</h3>
+                    <div class="metric-value">Orgânico</div>
+                    <div class="metric-change">Composto caseiro</div>
+                </div>
+                
+                <div class="painel-card">
+                    <i data-lucide="clock" class="painel-icon"></i>
+                    <h3>Ciclos de Rega</h3>
+                    <div class="metric-value">2x/dia</div>
+                    <div class="metric-change">Manhã e tarde</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ciência na Horta -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Ciência na Horta</h2>
+            
+            <div class="ciencia-grid">
+                <div class="ciencia-card" data-tilt>
+                    <div class="ciencia-icon">
+                        <i data-lucide="sun" class="icon"></i>
+                    </div>
+                    <h3>Fotossíntese</h3>
+                    <p>Processo pelo qual as plantas convertem luz solar em energia, produzindo oxigênio e glicose.</p>
+                </div>
+                
+                <div class="ciencia-card" data-tilt>
+                    <div class="ciencia-icon">
+                        <i data-lucide="cloud-rain" class="icon"></i>
+                    </div>
+                    <h3>Ciclo da Água</h3>
+                    <p>Como a água se move pelo solo, plantas e atmosfera, fundamental para o crescimento.</p>
+                </div>
+                
+                <div class="ciencia-card" data-tilt>
+                    <div class="ciencia-icon">
+                        <i data-lucide="atom" class="icon"></i>
+                    </div>
+                    <h3>Nutrientes do Solo</h3>
+                    <p>Nitrogênio, fósforo e potássio são essenciais para o desenvolvimento saudável das plantas.</p>
+                </div>
+                
+                <div class="ciencia-card" data-tilt>
+                    <div class="ciencia-icon">
+                        <i data-lucide="recycle" class="icon"></i>
+                    </div>
+                    <h3>Compostagem</h3>
+                    <p>Transformação de resíduos orgânicos em adubo natural, fechando o ciclo de nutrientes.</p>
+                </div>
+                
+                <div class="ciencia-card" data-tilt>
+                    <div class="ciencia-icon">
+                        <i data-lucide="butterfly" class="icon"></i>
+                    </div>
+                    <h3>Polinização</h3>
+                    <p>Transferência de pólen entre flores, essencial para a produção de frutos e sementes.</p>
+                </div>
+                
+                <div class="ciencia-card" data-tilt>
+                    <div class="ciencia-icon">
+                        <i data-lucide="thermometer" class="icon"></i>
+                    </div>
+                    <h3>Fotoperíodo</h3>
+                    <p>Duração da luz solar que influencia o crescimento e floração das plantas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catálogo de Plantas -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Plantas da Nossa Horta</h2>
+            
+            <div class="catalogo-grid">
+                <div class="planta-catalogo">
+                    <div class="planta-image">
+                        <img src="https://picsum.photos/300/200?random=21" alt="Alface">
+                    </div>
+                    <div class="planta-info">
+                        <h3>Alface</h3>
+                        <p><strong>Rega:</strong> Diária</p>
+                        <p><strong>Sol:</strong> 4-6 horas</p>
+                        <p><strong>Colheita:</strong> 30 dias</p>
+                    </div>
+                </div>
+                
+                <div class="planta-catalogo">
+                    <div class="planta-image">
+                        <img src="https://picsum.photos/300/200?random=22" alt="Couve">
+                    </div>
+                    <div class="planta-info">
+                        <h3>Couve</h3>
+                        <p><strong>Rega:</strong> A cada 2 dias</p>
+                        <p><strong>Sol:</strong> 3-5 horas</p>
+                        <p><strong>Colheita:</strong> 60 dias</p>
+                    </div>
+                </div>
+                
+                <div class="planta-catalogo">
+                    <div class="planta-image">
+                        <img src="https://picsum.photos/300/200?random=23" alt="Espinafre">
+                    </div>
+                    <div class="planta-info">
+                        <h3>Espinafre</h3>
+                        <p><strong>Rega:</strong> A cada 2 dias</p>
+                        <p><strong>Sol:</strong> 3-4 horas</p>
+                        <p><strong>Colheita:</strong> 40 dias</p>
+                    </div>
+                </div>
+                
+                <div class="planta-catalogo">
+                    <div class="planta-image">
+                        <img src="https://picsum.photos/300/200?random=24" alt="Tomate">
+                    </div>
+                    <div class="planta-info">
+                        <h3>Tomate</h3>
+                        <p><strong>Rega:</strong> Diária</p>
+                        <p><strong>Sol:</strong> 6-8 horas</p>
+                        <p><strong>Colheita:</strong> 70 dias</p>
+                    </div>
+                </div>
+                
+                <div class="planta-catalogo">
+                    <div class="planta-image">
+                        <img src="https://picsum.photos/300/200?random=25" alt="Cebolinha">
+                    </div>
+                    <div class="planta-info">
+                        <h3>Cebolinha</h3>
+                        <p><strong>Rega:</strong> A cada 2 dias</p>
+                        <p><strong>Sol:</strong> 4-6 horas</p>
+                        <p><strong>Colheita:</strong> 35 dias</p>
+                    </div>
+                </div>
+                
+                <div class="planta-catalogo">
+                    <div class="planta-image">
+                        <img src="https://picsum.photos/300/200?random=26" alt="Alecrim">
+                    </div>
+                    <div class="planta-info">
+                        <h3>Alecrim</h3>
+                        <p><strong>Rega:</strong> 2x por semana</p>
+                        <p><strong>Sol:</strong> 6-8 horas</p>
+                        <p><strong>Colheita:</strong> 90 dias</p>
+                    </div>
+                </div>
+                
+                <div class="planta-catalogo">
+                    <div class="planta-image">
+                        <img src="https://picsum.photos/300/200?random=27" alt="Hortelã">
+                    </div>
+                    <div class="planta-info">
+                        <h3>Hortelã</h3>
+                        <p><strong>Rega:</strong> A cada 2 dias</p>
+                        <p><strong>Sol:</strong> 3-5 horas</p>
+                        <p><strong>Colheita:</strong> 25 dias</p>
+                    </div>
+                </div>
+                
+                <div class="planta-catalogo">
+                    <div class="planta-image">
+                        <img src="https://picsum.photos/300/200?random=28" alt="Salsinha">
+                    </div>
+                    <div class="planta-info">
+                        <h3>Salsinha</h3>
+                        <p><strong>Rega:</strong> A cada 2 dias</p>
+                        <p><strong>Sol:</strong> 4-6 horas</p>
+                        <p><strong>Colheita:</strong> 45 dias</p>
+                    </div>
+                </div>
+                
+                <div class="planta-catalogo">
+                    <div class="planta-image">
+                        <img src="https://picsum.photos/300/200?random=29" alt="Pimenta">
+                    </div>
+                    <div class="planta-info">
+                        <h3>Pimenta</h3>
+                        <p><strong>Rega:</strong> A cada 2 dias</p>
+                        <p><strong>Sol:</strong> 6-8 horas</p>
+                        <p><strong>Colheita:</strong> 80 dias</p>
+                    </div>
+                </div>
+                
+                <div class="planta-catalogo">
+                    <div class="planta-image">
+                        <img src="https://picsum.photos/300/200?random=30" alt="Abóbora">
+                    </div>
+                    <div class="planta-info">
+                        <h3>Abóbora</h3>
+                        <p><strong>Rega:</strong> A cada 2 dias</p>
+                        <p><strong>Sol:</strong> 6-8 horas</p>
+                        <p><strong>Colheita:</strong> 120 dias</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog/Notícias -->
+    <section id="blog" class="section">
+        <div class="container">
+            <h2 class="section-title">Blog / Notícias da Horta</h2>
+            
+            <div class="blog-grid">
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <img src="https://picsum.photos/400/200?random=11" alt="Atualização semanal">
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-date">15 Nov 2025</span>
+                        <h3>Atualização Semanal da Horta</h3>
+                        <p>Esta semana colhemos nossa primeira alface! O João e a Maria ficaram muito animados vendo o resultado do trabalho de semanas...</p>
+                        <a href="#" class="blog-link">Ler mais</a>
+                    </div>
+                </article>
+                
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <img src="https://picsum.photos/400/200?random=12" alt="Dicas de plantio">
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-date">12 Nov 2025</span>
+                        <h3>Dicas de Plantio para Iniciantes</h3>
+                        <p>Aprenda os segredos para começar sua própria horta em casa. Desde a escolha do local até os primeiros cuidados...</p>
+                        <a href="#" class="blog-link">Ler mais</a>
+                    </div>
+                </article>
+                
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <img src="https://picsum.photos/400/200?random=13" alt="Experimentos">
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-date">10 Nov 2025</span>
+                        <h3>Novos Experimentos Científicos</h3>
+                        <p>Estamos testando diferentes tipos de adubo orgânico para ver qual promove melhor crescimento das plantas...</p>
+                        <a href="#" class="blog-link">Ler mais</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Área de Voluntariado -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Área de Voluntariado</h2>
+            
+            <div class="voluntariado-content">
+                <div class="voluntariado-form">
+                    <h3>Inscreva-se para Ajudar</h3>
+                    <form class="form" id="voluntariadoForm">
+                        <div class="form-group">
+                            <label for="nome-voluntario">Nome</label>
+                            <input type="text" id="nome-voluntario" name="nome" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email-voluntario">Email</label>
+                            <input type="email" id="email-voluntario" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="turma-voluntario">Turma</label>
+                            <input type="text" id="turma-voluntario" name="turma" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="funcoes">Funções de Interesse</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="funcoes" value="regar">
+                                    <span class="checkmark"></span>
+                                    Regar
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="funcoes" value="podar">
+                                    <span class="checkmark"></span>
+                                    Podar
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="funcoes" value="ervas">
+                                    <span class="checkmark"></span>
+                                    Tirar Ervas
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="funcoes" value="ferramentas">
+                                    <span class="checkmark"></span>
+                                    Organizar Ferramentas
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="funcoes" value="dados">
+                                    <span class="checkmark"></span>
+                                    Registrar Dados
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="horarios">Horários Preferidos</label>
+                            <select id="horarios" name="horarios" required>
+                                <option value="">Selecione um horário</option>
+                                <option value="matutino">Matutino (7h-12h)</option>
+                                <option value="vespertino">Vespertino (12h-18h)</option>
+                                <option value="sabado">Sábado (8h-12h)</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary">Me Inscrever</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Parcerias -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Parcerias</h2>
+            
+            <div class="parcerias-grid">
+                <div class="parceria-card">
+                    <div class="parceria-logo">SESI</div>
+                    <h3>SESI</h3>
+                    <p>Parceria educacional que fomenta inovação e sustentabilidade</p>
+                </div>
+                
+                <div class="parceria-card">
+                    <div class="parceria-logo">🏭</div>
+                    <h3>Indústrias Parceiras</h3>
+                    <p>Empresas locais que apoiam projetos educativos sustentáveis</p>
+                </div>
+                
+                <div class="parceria-card">
+                    <div class="parceria-logo">🌍</div>
+                    <h3>Projetos Sustentáveis</h3>
+                    <p>Iniciativas ambientais que inspiram nossa horta escolar</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mundo Sustentável -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Mundo Sustentável</h2>
+            
+            <div class="sustentavel-grid">
+                <div class="sustentavel-card" data-tilt>
+                    <div class="sustentavel-icon">
+                        <i data-lucide="droplets"></i>
+                    </div>
+                    <h3>Economia de Água</h3>
+                    <p>Dicas para usar água de forma consciente na horta e em casa</p>
+                </div>
+                
+                <div class="sustentavel-card" data-tilt>
+                    <div class="sustentavel-icon">
+                        <i data-lucide="rotate-ccw"></i>
+                    </div>
+                    <h3>Reaproveitamento</h3>
+                    <p>Transformar materiais descartados em itens úteis para a horta</p>
+                </div>
+                
+                <div class="sustentavel-card" data-tilt>
+                    <div class="sustentavel-icon">
+                        <i data-lucide="recycle"></i>
+                    </div>
+                    <h3>Compostagem Caseira</h3>
+                    <p>Como fazer adubo orgânico com resíduos de cozinha</p>
+                </div>
+                
+                <div class="sustentavel-card" data-tilt>
+                    <div class="sustentavel-icon">
+                        <i data-lucide="home"></i>
+                    </div>
+                    <h3>Plantio Doméstico</h3>
+                    <p>Crie sua própria horta em apartamentos e pequenos espaços</p>
+                </div>
+                
+                <div class="sustentavel-card" data-tilt>
+                    <div class="sustentavel-icon">
+                        <i data-lucide="trash"></i>
+                    </div>
+                    <h3>Redução de Lixo</h3>
+                    <p>Estratégias para minimizar resíduos e maximizar reciclagem</p>
+                </div>
+                
+                <div class="sustentavel-card" data-tilt>
+                    <div class="sustentavel-icon">
+                        <i data-lucide="leaf"></i>
+                    </div>
+                    <h3>Biodiversidade</h3>
+                    <p>Como atrair insetos benéficos e pássaros para a horta</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Faça Você Mesmo -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Faça Você Mesmo</h2>
+            
+            <div class="tutoriais-grid">
+                <div class="tutorial-card">
+                    <div class="tutorial-step">1</div>
+                    <h3>Como Plantar um Tempero em Casa</h3>
+                    <p>Guia passo a passo para começar sua horta de temperos com materiais simples</p>
+                    <button class="btn-secondary">Ver Tutorial</button>
+                </div>
+                
+                <div class="tutorial-card">
+                    <div class="tutorial-step">2</div>
+                    <h3>Como Fazer Compostagem</h3>
+                    <p>Transforme resíduos orgânicos em adubo nutritivo para suas plantas</p>
+                    <button class="btn-secondary">Ver Tutorial</button>
+                </div>
+                
+                <div class="tutorial-card">
+                    <div class="tutorial-step">3</div>
+                    <h3>Como Montar um Canteiro Pequeno</h3>
+                    <p>Aprenda a construir um canteiro eficiente em espaços limitados</p>
+                    <button class="btn-secondary">Ver Tutorial</button>
+                </div>
+                
+                <div class="tutorial-card">
+                    <div class="tutorial-step">4</div>
+                    <h3>Como Germinar Sementes</h3>
+                    <p>Técnicas para germinar sementes com sucesso em casa</p>
+                    <button class="btn-secondary">Ver Tutorial</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Perguntas Frequentes</h2>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>Por que o nome Lavoisier?</h3>
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>O nome Lavoisier é uma homenagem ao químico francês Antoine Lavoisier, conhecido como o "pai da química moderna". Ele descobriu a lei da conservação da massa, fundamental para entender os processos químicos na agricultura e jardinagem.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>Como funciona a horta?</h3>
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>A horta funciona como um laboratório vivo onde os alunos aprendem sobre botânica, química e sustentabilidade na prática. Os estudantes cuidam das plantas, registram dados de crescimento e aprendem sobre os ciclos naturais.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>Posso ajudar na horta?</h3>
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sim! Qualquer aluno pode se voluntariar para ajudar na horta. Temos várias funções como regar, podar, tirar ervas daninhas e registrar dados. Consulte a seção de voluntariado para se inscrever.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>Quanto tempo leva a colheita?</h3>
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>O tempo varia conforme a planta. Folhas como alface e rabanete levam cerca de 30 dias, enquanto frutos como tomate e pimentão podem levar até 90 dias. Consulte nossa seção de tempo de colheita para mais detalhes.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>Quais plantas são mais fáceis?</h3>
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Para iniciantes, recomendamos alface, rabanete, salsinha e cebolinha. Elas crescem rapidamente e são mais tolerantes a erros no cuidado. Temperos como manjericão e hortelã também são ótimas opções.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer id="contato" class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <span class="logo-icon">🌱</span>
+                        <span class="logo-text">Horta Escolar SESI</span>
+                    </div>
+                    <p class="footer-tagline">Da ciência ao solo, do solo ao futuro.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Créditos</h4>
+                    <p>Projeto desenvolvido pelos alunos do SESI</p>
+                    <p>Ano: 2025</p>
+                    <p>Turma: Ensino Médio Integrado</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <p>Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4b2324393f2a652e382824272a390b382e3822652e2f3e652939">[email&#160;protected]</a></p>
+                    <p>Telefone: (11) 9999-9999</p>
+                    <p>Endereço: SESI - São Paulo</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Siga-nos</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Facebook</a>
+                        <a href="#" class="social-link">Instagram</a>
+                        <a href="#" class="social-link">YouTube</a>
+                    </div>
+                    <div class="qr-code">
+                        <div class="qr-placeholder">
+                            <i data-lucide="qr-code"></i>
+                            <span>Escaneie para acessar pelo celular</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Lavoisier - Horta Escolar SESI. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <div class="lightbox-content" onclick="event.stopPropagation()">
+            <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+            <img id="lightbox-image" src="" alt="">
+            <div id="lightbox-caption"></div>
+        </div>
+    </div>
+
+    <!-- Modal de Login -->
+    <div id="loginModal" class="login-modal">
+        <div class="login-content">
+            <div class="login-header">
+                <h2>Área Administrativa</h2>
+                <button class="close-btn" onclick="closeLogin()">&times;</button>
+            </div>
+            <div class="login-form-container">
+                <form class="login-form" id="loginForm" onsubmit="performLogin(event)">
+                    <div class="form-group">
+                        <label for="adminUser">Usuário</label>
+                        <input type="text" id="adminUser" name="username" required placeholder="Digite seu usuário">
+                    </div>
+                    <div class="form-group">
+                        <label for="adminPassword">Senha</label>
+                        <input type="password" id="adminPassword" name="password" required placeholder="Digite sua senha">
+                    </div>
+                    <button type="submit" class="btn-admin-login">Entrar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Área Administrativa (inicialmente oculta) -->
+    <div id="adminArea" class="admin-area">
+        <div class="admin-container">
+            <div class="admin-header">
+                <h1>Dashboard Administrativo</h1>
+                <button class="btn-admin-logout" onclick="logout()">Sair</button>
+            </div>
+            
+            <div class="admin-nav">
+                <button class="admin-nav-btn active" onclick="showAdminTab('sugestoes')" data-tab="sugestoes">
+                    Sugestões dos Alunos
+                </button>
+                <button class="admin-nav-btn" onclick="showAdminTab('painel')" data-tab="painel">
+                    Painel de Controle
+                </button>
+            </div>
+
+            <!-- Tab: Sugestões -->
+            <div id="admin-sugestoes" class="admin-tab-content active">
+                <h2>Sugestões Recebidas</h2>
+                <div class="suggestions-admin-list">
+                    <div class="admin-suggestion-card">
+                        <div class="suggestion-header">
+                            <span class="suggestion-category">Plantas</span>
+                            <span class="suggestion-status">Pendente</span>
+                        </div>
+                        <h4>João - 3º C</h4>
+                        <p><strong>Sugestão:</strong> Aumentar os canteiros para plantar mais temperos</p>
+                        <p><strong>Data:</strong> 20 Nov 2025</p>
+                        <div class="suggestion-actions">
+                            <button class="btn-approve">Aprovar</button>
+                            <button class="btn-reject">Rejeitar</button>
+                        </div>
+                    </div>
+
+                    <div class="admin-suggestion-card">
+                        <div class="suggestion-header">
+                            <span class="suggestion-category">Cuidados</span>
+                            <span class="suggestion-status">Aprovada</span>
+                        </div>
+                        <h4>Maria - 2º B</h4>
+                        <p><strong>Sugestão:</strong> Instalar regador automático para facilitar a rega</p>
+                        <p><strong>Data:</strong> 19 Nov 2025</p>
+                        <div class="suggestion-actions">
+                            <button class="btn-approved">Aprovada ✓</button>
+                        </div>
+                    </div>
+
+                    <div class="admin-suggestion-card">
+                        <div class="suggestion-header">
+                            <span class="suggestion-category">Estrutura</span>
+                            <span class="suggestion-status">Pendente</span>
+                        </div>
+                        <h4>Pedro - 1º A</h4>
+                        <p><strong>Sugestão:</strong> Criar bancada para organizeer as ferramentas</p>
+                        <p><strong>Data:</strong> 18 Nov 2025</p>
+                        <div class="suggestion-actions">
+                            <button class="btn-approve">Aprovar</button>
+                            <button class="btn-reject">Rejeitar</button>
+                        </div>
+                    </div>
+
+                    <div class="admin-suggestion-card">
+                        <div class="suggestion-header">
+                            <span class="suggestion-category">Plantas</span>
+                            <span class="suggestion-status">Pendente</span>
+                        </div>
+                        <h4>Ana - 3º A</h4>
+                        <p><strong>Sugestão:</strong> Plantar morangos na horta</p>
+                        <p><strong>Data:</strong> 17 Nov 2025</p>
+                        <div class="suggestion-actions">
+                            <button class="btn-approve">Aprovar</button>
+                            <button class="btn-reject">Rejeitar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: Painel de Controle -->
+            <div id="admin-painel" class="admin-tab-content">
+                <h2>Painel de Controle</h2>
+                <div class="admin-stats">
+                    <div class="stat-card">
+                        <h3>Sugestões Totais</h3>
+                        <div class="stat-number stats-total">0</div>
+                        <p>Total de sugestões</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Pendentes</h3>
+                        <div class="stat-number stats-pendentes">0</div>
+                        <p>Para revisão</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Aprovadas</h3>
+                        <div class="stat-number stats-aprovadas">0</div>
+                        <p>Implementadas</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Rejeitadas</h3>
+                        <div class="stat-number stats-rejeitadas">0</div>
+                        <p>Rejeitadas</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ===== INICIALIZAÇÃO =====
+document.addEventListener('DOMContentLoaded', function() {
+    // Aguardar carregamento dos ícones
+    setTimeout(() => {
+        initializeLucideIcons();
+    }, 100);
+    
+    initializeParticles();
+    initializeNavigation();
+    initializeScrollAnimations();
+    initializeTiltEffects();
+    initializeProgressBars();
+    initializeCharts();
+    initializeForms();
+    initializeFAQ();
+    initializeScrollToTop();
+    initializeIntersectionObserver();
+    
+    // Adicionar classe de carregamento completo
+    setTimeout(() => {
+        document.body.classList.add('loaded');
+    }, 500);
+});
+
+// ===== ICONES LUCIDE =====
+function initializeLucideIcons() {
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
+}
+
+// ===== PARTÍCULAS =====
+function initializeParticles() {
+    if (typeof particlesJS !== 'undefined') {
+        particlesJS("particles-js", {
+            particles: {
+                number: {
+                    value: 80,
+                    density: {
+                        enable: true,
+                        value_area: 800
+                    }
+                },
+                color: {
+                    value: ["#7fb069", "#ffffff", "#4a7c59"]
+                },
+                shape: {
+                    type: "circle",
+                    stroke: {
+                        width: 0,
+                        color: "#000000"
+                    }
+                },
+                opacity: {
+                    value: 0.5,
+                    random: false,
+                    anim: {
+                        enable: false,
+                        speed: 1,
+                        opacity_min: 0.1,
+                        sync: false
+                    }
+                },
+                size: {
+                    value: 3,
+                    random: true,
+                    anim: {
+                        enable: false,
+                        speed: 40,
+                        size_min: 0.1,
+                        sync: false
+                    }
+                },
+                line_linked: {
+                    enable: false
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: "top",
+                    random: true,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false,
+                    attract: {
+                        enable: false,
+                        rotateX: 600,
+                        rotateY: 1200
+                    }
+                }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: "repulse"
+                    },
+                    onclick: {
+                        enable: true,
+                        mode: "push"
+                    },
+                    resize: true
+                },
+                modes: {
+                    grab: {
+                        distance: 400,
+                        line_linked: {
+                            opacity: 1
+                        }
+                    },
+                    bubble: {
+                        distance: 400,
+                        size: 40,
+                        duration: 2,
+                        opacity: 8,
+                        speed: 3
+                    },
+                    repulse: {
+                        distance: 200,
+                        duration: 0.4
+                    },
+                    push: {
+                        particles_nb: 4
+                    },
+                    remove: {
+                        particles_nb: 2
+                    }
+                }
+            },
+            retina_detect: true
+        });
+    }
+}
+
+// ===== NAVEGAÇÃO =====
+function initializeNavigation() {
+    const navbar = document.querySelector('.navbar');
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    // Scroll effect on navbar
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) {
+            navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+            navbar.style.boxShadow = '0 2px 20px rgba(45, 80, 22, 0.1)';
+        } else {
+            navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+            navbar.style.boxShadow = 'none';
+        }
+    });
+    
+    // Mobile menu toggle
+    if (hamburger && navMenu) {
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+    }
+    
+    // Smooth scroll for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+}
+
+function scrollToSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    if (section) {
+        const offset = 80; // Altura da navegação
+        const elementPosition = section.offsetTop;
+        const offsetPosition = elementPosition - offset;
+        
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+        });
+        
+        // Adicionar destaque temporário à seção
+        section.classList.add('section-highlight');
+        setTimeout(() => {
+            section.classList.remove('section-highlight');
+        }, 2000);
+    }
+}
+
+// ===== ANIMAÇÕES DE SCROLL =====
+function initializeScrollAnimations() {
+    const animatedElements = document.querySelectorAll('.sobre-card, .mvv-card, .planta-card, .ciencia-card, .sustentavel-card, .tutorial-card');
+    
+    animatedElements.forEach((el, index) => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(50px)';
+        el.style.transition = 'all 0.6s ease';
+        el.style.transitionDelay = `${index * 0.1}s`;
+    });
+}
+
+function initializeIntersectionObserver() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+    
+    document.querySelectorAll('.sobre-card, .mvv-card, .planta-card, .ciencia-card, .sustentavel-card, .tutorial-card').forEach(el => {
+        observer.observe(el);
+    });
+}
+
+// ===== EFEITOS 3D =====
+function initializeTiltEffects() {
+    const tiltElements = document.querySelectorAll('[data-tilt]');
+    
+    tiltElements.forEach(element => {
+        element.addEventListener('mouseenter', () => {
+            element.style.transform = 'rotateX(5deg) rotateY(5deg) scale(1.05)';
+        });
+        
+        element.addEventListener('mousemove', (e) => {
+            const rect = element.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const rotateX = (y - centerY) / 10;
+            const rotateY = (centerX - x) / 10;
+            
+            element.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+        });
+        
+        element.addEventListener('mouseleave', () => {
+            element.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
+        });
+    });
+}
+
+// ===== BARRAS DE PROGRESSO =====
+function initializeProgressBars() {
+    const progressBars = document.querySelectorAll('.progress-fill');
+    
+    const progressObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const progressBar = entry.target;
+                const progress = progressBar.getAttribute('data-progress');
+                
+                setTimeout(() => {
+                    progressBar.style.width = progress + '%';
+                }, 300);
+            }
+        });
+    });
+    
+    progressBars.forEach(bar => {
+        progressObserver.observe(bar);
+    });
+}
+
+// ===== GRÁFICOS =====
+function initializeCharts() {
+    const growthChart = document.getElementById('growthChart');
+    
+    if (growthChart) {
+        const ctx = growthChart.getContext('2d');
+        
+        // Dados do gráfico
+        const weeks = ['Semana 1', 'Semana 2', 'Semana 3', 'Semana 4', 'Semana 5', 'Semana 6'];
+        const alface = [2, 5, 8, 12, 18, 25];
+        const tomate = [1, 3, 6, 10, 15, 20];
+        const cenoura = [1, 2, 4, 7, 12, 18];
+        
+        drawChart(ctx, weeks, alface, tomate, cenoura);
+    }
+}
+
+function drawChart(ctx, labels, data1, data2, data3) {
+    const width = ctx.canvas.width;
+    const height = ctx.canvas.height;
+    const padding = 60;
+    const chartWidth = width - 2 * padding;
+    const chartHeight = height - 2 * padding;
+    
+    // Limpar canvas
+    ctx.clearRect(0, 0, width, height);
+    
+    // Configurações
+    const maxValue = Math.max(...data1, ...data2, ...data3);
+    const barWidth = chartWidth / (labels.length * 4);
+    
+    // Desenhar eixos
+    ctx.strokeStyle = '#6c757d';
+    ctx.lineWidth = 2;
+    
+    // Eixo Y
+    ctx.beginPath();
+    ctx.moveTo(padding, padding);
+    ctx.lineTo(padding, height - padding);
+    ctx.stroke();
+    
+    // Eixo X
+    ctx.beginPath();
+    ctx.moveTo(padding, height - padding);
+    ctx.lineTo(width - padding, height - padding);
+    ctx.stroke();
+    
+    // Linhas de grade
+    ctx.strokeStyle = '#f8f9fa';
+    ctx.lineWidth = 1;
+    for (let i = 0; i <= 5; i++) {
+        const y = padding + (chartHeight / 5) * i;
+        ctx.beginPath();
+        ctx.moveTo(padding, y);
+        ctx.lineTo(width - padding, y);
+        ctx.stroke();
+        
+        // Labels do eixo Y
+        ctx.fillStyle = '#6c757d';
+        ctx.font = '12px Inter';
+        ctx.textAlign = 'right';
+        const value = Math.round(maxValue * (1 - i / 5));
+        ctx.fillText(value + ' cm', padding - 10, y + 4);
+    }
+    
+    // Desenhar barras
+    const colors = ['#7fb069', '#4a7c59', '#2d5016'];
+    const datasets = [data1, data2, data3];
+    
+    labels.forEach((label, i) => {
+        const x = padding + (chartWidth / labels.length) * i + barWidth;
+        
+        datasets.forEach((data, datasetIndex) => {
+            const barHeight = (data[i] / maxValue) * chartHeight;
+            const barX = x + datasetIndex * barWidth;
+            const barY = height - padding - barHeight;
+            
+            // Barras com gradiente
+            const gradient = ctx.createLinearGradient(barX, barY, barX, height - padding);
+            gradient.addColorStop(0, colors[datasetIndex]);
+            gradient.addColorStop(1, colors[datasetIndex] + '80');
+            
+            ctx.fillStyle = gradient;
+            ctx.fillRect(barX, barY, barWidth * 0.8, barHeight);
+            
+            // Bordas das barras
+            ctx.strokeStyle = colors[datasetIndex];
+            ctx.lineWidth = 1;
+            ctx.strokeRect(barX, barY, barWidth * 0.8, barHeight);
+        });
+        
+        // Labels do eixo X
+        ctx.fillStyle = '#6c757d';
+        ctx.font = '12px Inter';
+        ctx.textAlign = 'center';
+        ctx.fillText(label, x + barWidth * 1.5, height - padding + 20);
+    });
+    
+    // Legenda
+    const legend = ['Alface', 'Tomate', 'Cenoura'];
+    legend.forEach((item, i) => {
+        const legendX = width - padding - 150;
+        const legendY = padding + i * 25;
+        
+        ctx.fillStyle = colors[i];
+        ctx.fillRect(legendX, legendY, 15, 15);
+        
+        ctx.fillStyle = '#6c757d';
+        ctx.font = '14px Inter';
+        ctx.textAlign = 'left';
+        ctx.fillText(item, legendX + 20, legendY + 12);
+    });
+}
+
+// ===== FORMULÁRIOS =====
+function initializeForms() {
+    // Formulário de sugestões
+    const sugestaoForm = document.getElementById('sugestaoForm');
+    if (sugestaoForm) {
+        sugestaoForm.addEventListener('submit', handleSugestaoSubmit);
+    }
+    
+    // Formulário de voluntariado
+    const voluntariadoForm = document.getElementById('voluntariadoForm');
+    if (voluntariadoForm) {
+        voluntariadoForm.addEventListener('submit', handleVoluntariadoSubmit);
+    }
+}
+
+function handleSugestaoSubmit(e) {
+    e.preventDefault();
+    
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData);
+    
+    // Salvar sugestão no localStorage
+    const suggestions = JSON.parse(localStorage.getItem('gardenSuggestions') || '[]');
+    const suggestion = {
+        id: Date.now(),
+        nome: data.nome || 'Anônimo',
+        email: data.email || '',
+        turma: data.turma || '',
+        planta: data.planta-sugestao || '',
+        sugestao: data.sugestao || '',
+        data: new Date().toLocaleString('pt-BR'),
+        status: 'pendente'
+    };
+    
+    suggestions.push(suggestion);
+    localStorage.setItem('gardenSuggestions', JSON.stringify(suggestions));
+    
+    // Mostrar no painel admin se estiver logado
+    if (isLoggedIn) {
+        loadSuggestionsToAdmin();
+        showNotification('Nova sugestão salva no sistema!', 'success');
+    } else {
+        showMessage('Sugestão enviada com sucesso! Obrigado pela sua contribuição.', 'success');
+    }
+    
+    e.target.reset();
+}
+
+function handleVoluntariadoSubmit(e) {
+    e.preventDefault();
+    
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData);
+    
+    // Simular envio
+    showMessage('Inscrição realizada com sucesso! Em breve entraremos em contato.', 'success');
+    e.target.reset();
+}
+
+function showMessage(message, type = 'info') {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `message message-${type}`;
+    messageDiv.innerHTML = `
+        <div class="message-content">
+            <i data-lucide="${type === 'success' ? 'check-circle' : 'info'}"></i>
+            <span>${message}</span>
+            <button class="message-close" onclick="this.parentElement.parentElement.remove()">
+                <i data-lucide="x"></i>
+            </button>
+        </div>
+    `;
+    
+    // Adicionar estilos da mensagem
+    messageDiv.style.cssText = `
+        position: fixed;
+        top: 100px;
+        right: 20px;
+        background: ${type === 'success' ? '#28a745' : '#17a2b8'};
+        color: white;
+        padding: 16px;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        z-index: 10000;
+        animation: slideInRight 0.3s ease;
+        max-width: 400px;
+    `;
+    
+    document.body.appendChild(messageDiv);
+    initializeLucideIcons();
+    
+    // Auto remove after 5 seconds
+    setTimeout(() => {
+        if (messageDiv.parentElement) {
+            messageDiv.remove();
+        }
+    }, 5000);
+}
+
+// ===== FAQ =====
+function initializeFAQ() {
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        const answer = item.querySelector('.faq-answer');
+        
+        if (question && answer) {
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                
+                // Fechar todos os outros
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                
+                // Toggle atual
+                if (isActive) {
+                    item.classList.remove('active');
+                } else {
+                    item.classList.add('active');
+                }
+            });
+        }
+    });
+}
+
+function toggleFAQ(element) {
+    const faqItem = element.parentElement;
+    faqItem.classList.toggle('active');
+}
+
+// ===== LIGHTBOX =====
+function openLightbox(element) {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightbox-image');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    
+    if (lightbox && lightboxImage && lightboxCaption) {
+        const img = element.querySelector('img');
+        const caption = element.querySelector('.gallery-overlay span');
+        
+        lightboxImage.src = img.src;
+        lightboxImage.alt = img.alt;
+        lightboxCaption.textContent = caption ? caption.textContent : img.alt;
+        
+        lightbox.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeLightbox() {
+    const lightbox = document.getElementById('lightbox');
+    if (lightbox) {
+        lightbox.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+}
+
+// ===== SCROLL TO TOP =====
+function initializeScrollToTop() {
+    // Criar botão
+    const scrollBtn = document.createElement('button');
+    scrollBtn.className = 'scroll-to-top';
+    scrollBtn.innerHTML = '<i data-lucide="arrow-up"></i>';
+    scrollBtn.onclick = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    };
+    
+    document.body.appendChild(scrollBtn);
+    initializeLucideIcons();
+    
+    // Mostrar/esconder baseado no scroll
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) {
+            scrollBtn.classList.add('visible');
+        } else {
+            scrollBtn.classList.remove('visible');
+        }
+    });
+}
+
+// ===== ANIMAÇÕES UTILITÁRIAS =====
+function animateValue(element, start, end, duration) {
+    let startTimestamp = null;
+    const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        const value = Math.floor(progress * (end - start) + start);
+        element.textContent = value;
+        if (progress < 1) {
+            window.requestAnimationFrame(step);
+        }
+    };
+    window.requestAnimationFrame(step);
+}
+
+// ===== PERFORMANCE E OTIMIZAÇÃO =====
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// ===== EVENT LISTENERS GLOBAIS =====
+window.addEventListener('resize', debounce(() => {
+    // Reinitializar gráficos se necessário
+    const growthChart = document.getElementById('growthChart');
+    if (growthChart && growthChart.getContext) {
+        initializeCharts();
+    }
+}, 250));
+
+// ===== ACESSIBILIDADE =====
+document.addEventListener('keydown', (e) => {
+    // ESC para fechar lightbox
+    if (e.key === 'Escape') {
+        closeLightbox();
+    }
+    
+    // Navegação por teclado nos elementos interativos
+    if (e.key === 'Enter' || e.key === ' ') {
+        const activeElement = document.activeElement;
+        if (activeElement.classList.contains('faq-question')) {
+            e.preventDefault();
+            toggleFAQ(activeElement);
+        }
+    }
+});
+
+// ===== LAZY LOADING PARA IMAGENS =====
+function initializeLazyLoading() {
+    const images = document.querySelectorAll('img[data-src]');
+    
+    const imageObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                img.classList.remove('lazy');
+                imageObserver.unobserve(img);
+            }
+        });
+    });
+    
+    images.forEach(img => imageObserver.observe(img));
+}
+
+// ===== ANALYTICS E TRACKING =====
+function trackEvent(action, category, label) {
+    // Placeholder para Google Analytics ou outro sistema
+    console.log('Event tracked:', { action, category, label });
+}
+
+// ===== COMPATIBILIDADE =====
+function checkBrowserSupport() {
+    const features = {
+        intersectionObserver: 'IntersectionObserver' in window,
+        customProperties: CSS.supports('--fake-var', '0'),
+        grid: CSS.supports('display', 'grid'),
+        flexbox: CSS.supports('display', 'flex')
+    };
+    
+    if (!features.intersectionObserver) {
+        // Fallback para navegadores antigos
+        console.warn('IntersectionObserver not supported, using fallback');
+        // Implementar fallback se necessário
+    }
+    
+    return features;
+}
+
+// ===== INICIALIZAÇÃO FINAL =====
+checkBrowserSupport();
+initializeLazyLoading();
+
+// ===== SISTEMA DE LOGIN E ÁREA ADMINISTRATIVA =====
+
+// Variáveis globais para controle de login
+let isLoggedIn = false;
+
+// Função para mostrar/esconder menu administrativo
+function toggleAdminMenu() {
+    const dropdown = document.getElementById('adminDropdown');
+    dropdown.classList.toggle('show');
+}
+
+// Função para abrir modal de login
+function openLogin() {
+    closeAdminMenu();
+    const modal = document.getElementById('loginModal');
+    modal.classList.add('show');
+    
+    // Limpar campos
+    document.getElementById('adminUser').value = '';
+    document.getElementById('adminPassword').value = '';
+}
+
+// Função para fechar modal de login
+function closeLogin() {
+    const modal = document.getElementById('loginModal');
+    modal.classList.remove('show');
+}
+
+// Função para fechar menu administrativo
+function closeAdminMenu() {
+    const dropdown = document.getElementById('adminDropdown');
+    dropdown.classList.remove('show');
+}
+
+// Função para realizar login
+function performLogin(event) {
+    event.preventDefault();
+    
+    const username = document.getElementById('adminUser').value.trim();
+    const password = document.getElementById('adminPassword').value;
+    
+    // Credenciais corretas
+    if (username === 'lavoisier' && password === 'lavoisier123456') {
+        isLoggedIn = true;
+        closeLogin();
+        showAdminArea();
+        loadSuggestionsToAdmin(); // Carregar sugestões
+        updateSuggestionsCount(); // Atualizar contadores
+        showNotification('Login realizado com sucesso!', 'success');
+    } else {
+        showNotification('Usuário ou senha incorretos!', 'error');
+    }
+}
+
+// Função para mostrar área administrativa
+function showAdminArea() {
+    const adminArea = document.getElementById('adminArea');
+    adminArea.classList.add('show');
+    
+    // Esconder todas as outras seções
+    const sections = document.querySelectorAll('section');
+    sections.forEach(section => {
+        if (section.id !== 'inicio') {
+            section.style.display = 'none';
+        }
+    });
+    
+    // Esconder navegação e footer
+    const nav = document.querySelector('.navbar');
+    const footer = document.querySelector('.footer');
+    if (nav) nav.style.display = 'none';
+    if (footer) footer.style.display = 'none';
+    
+    // Ocultar partículas
+    const particles = document.getElementById('particles-js');
+    if (particles) particles.style.display = 'none';
+}
+
+// Função para logout
+function logout() {
+    isLoggedIn = false;
+    const adminArea = document.getElementById('adminArea');
+    adminArea.classList.remove('show');
+    
+    // Mostrar todas as seções novamente
+    const sections = document.querySelectorAll('section');
+    sections.forEach(section => {
+        section.style.display = '';
+    });
+    
+    // Mostrar navegação e footer
+    const nav = document.querySelector('.navbar');
+    const footer = document.querySelector('.footer');
+    if (nav) nav.style.display = '';
+    if (footer) footer.style.display = '';
+    
+    // Mostrar partículas
+    const particles = document.getElementById('particles-js');
+    if (particles) particles.style.display = '';
+    
+    showNotification('Logout realizado com sucesso!', 'success');
+}
+
+// Função para mostrar abas administrativas
+function showAdminTab(tabName) {
+    // Esconder todas as abas
+    const tabs = document.querySelectorAll('.admin-tab-content');
+    tabs.forEach(tab => tab.classList.remove('active'));
+    
+    // Remover classe active dos botões
+    const buttons = document.querySelectorAll('.admin-nav-btn');
+    buttons.forEach(btn => btn.classList.remove('active'));
+    
+    // Mostrar aba selecionada
+    const activeTab = document.getElementById(`admin-${tabName}`);
+    if (activeTab) {
+        activeTab.classList.add('active');
+    }
+    
+    // Ativar botão selecionado
+    const activeButton = document.querySelector(`[data-tab="${tabName}"]`);
+    if (activeButton) {
+        activeButton.classList.add('active');
+    }
+}
+
+// Função para carregar sugestões no admin
+function loadSuggestionsToAdmin() {
+    const adminSuggestionsContainer = document.querySelector('.suggestions-admin-list');
+    if (!adminSuggestionsContainer) return;
+    
+    const suggestions = JSON.parse(localStorage.getItem('gardenSuggestions') || '[]');
+    
+    // Limpar container
+    adminSuggestionsContainer.innerHTML = '';
+    
+    if (suggestions.length === 0) {
+        adminSuggestionsContainer.innerHTML = '<p class="no-suggestions">Nenhuma sugestão encontrada.</p>';
+        return;
+    }
+    
+    // Gerar HTML das sugestões
+    suggestions.reverse().forEach((suggestion, index) => {
+        const card = document.createElement('div');
+        card.className = 'admin-suggestion-card';
+        card.innerHTML = `
+            <div class="suggestion-header">
+                <h4>${suggestion.nome}</h4>
+                <span class="suggestion-date">${suggestion.data}</span>
+            </div>
+            <div class="suggestion-info">
+                <p><strong>Email:</strong> ${suggestion.email || 'Não informado'}</p>
+                <p><strong>Turma:</strong> ${suggestion.turma || 'Não informada'}</p>
+                <p><strong>Planta sugerida:</strong> ${suggestion.planta || 'Não especificada'}</p>
+            </div>
+            <div class="suggestion-content">
+                <p>${suggestion.sugestao}</p>
+            </div>
+            <div class="suggestion-actions">
+                <button class="btn-approve" onclick="approveSuggestion(${suggestion.id})">Aprovar</button>
+                <button class="btn-reject" onclick="rejectSuggestion(${suggestion.id})">Rejeitar</button>
+                <button class="btn-delete" onclick="deleteSuggestion(${suggestion.id})">Excluir</button>
+            </div>
+        `;
+        adminSuggestionsContainer.appendChild(card);
+    });
+    
+    // Atualizar contador
+    updateSuggestionsCount();
+}
+
+// Função para aprovar sugestão
+function approveSuggestion(id) {
+    const suggestions = JSON.parse(localStorage.getItem('gardenSuggestions') || '[]');
+    const suggestion = suggestions.find(s => s.id == id);
+    if (suggestion) {
+        suggestion.status = 'aprovada';
+        localStorage.setItem('gardenSuggestions', JSON.stringify(suggestions));
+        loadSuggestionsToAdmin();
+        showNotification('Sugestão aprovada!', 'success');
+    }
+}
+
+// Função para rejeitar sugestão
+function rejectSuggestion(id) {
+    const suggestions = JSON.parse(localStorage.getItem('gardenSuggestions') || '[]');
+    const suggestion = suggestions.find(s => s.id == id);
+    if (suggestion) {
+        suggestion.status = 'rejeitada';
+        localStorage.setItem('gardenSuggestions', JSON.stringify(suggestions));
+        loadSuggestionsToAdmin();
+        showNotification('Sugestão rejeitada!', 'info');
+    }
+}
+
+// Função para deletar sugestão
+function deleteSuggestion(id) {
+    if (confirm('Tem certeza que deseja excluir esta sugestão?')) {
+        let suggestions = JSON.parse(localStorage.getItem('gardenSuggestions') || '[]');
+        suggestions = suggestions.filter(s => s.id != id);
+        localStorage.setItem('gardenSuggestions', JSON.stringify(suggestions));
+        loadSuggestionsToAdmin();
+        showNotification('Sugestão excluída!', 'success');
+    }
+}
+
+// Função para atualizar contador de sugestões
+function updateSuggestionsCount() {
+    const suggestions = JSON.parse(localStorage.getItem('gardenSuggestions') || '[]');
+    const total = suggestions.length;
+    const pendentes = suggestions.filter(s => s.status === 'pendente').length;
+    const aprovadas = suggestions.filter(s => s.status === 'aprovada').length;
+    const rejeitadas = suggestions.filter(s => s.status === 'rejeitada').length;
+    
+    // Atualizar elementos no painel admin se existirem
+    const totalElement = document.querySelector('.stats-total');
+    const pendentesElement = document.querySelector('.stats-pendentes');
+    const aprovadasElement = document.querySelector('.stats-aprovadas');
+    const rejeitadasElement = document.querySelector('.stats-rejeitadas');
+    
+    if (totalElement) totalElement.textContent = total;
+    if (pendentesElement) pendentesElement.textContent = pendentes;
+    if (aprovadasElement) aprovadasElement.textContent = aprovadas;
+    if (rejeitadasElement) rejeitadasElement.textContent = rejeitadas;
+}
+
+// Função para mostrar notificações
+function showNotification(message, type = 'info') {
+    // Remover notificação existente
+    const existingNotification = document.querySelector('.admin-notification');
+    if (existingNotification) {
+        existingNotification.remove();
+    }
+    
+    // Criar nova notificação
+    const notification = document.createElement('div');
+    notification.className = `admin-notification ${type}`;
+    notification.innerHTML = `
+        <div class="notification-content">
+            <span>${message}</span>
+            <button onclick="this.parentElement.parentElement.remove()">&times;</button>
+        </div>
+    `;
+    
+    // Estilos da notificação
+    Object.assign(notification.style, {
+        position: 'fixed',
+        top: '20px',
+        right: '20px',
+        background: type === 'success' ? '#28a745' : type === 'error' ? '#dc3545' : '#17a2b8',
+        color: 'white',
+        padding: '12px 20px',
+        borderRadius: '8px',
+        boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
+        zIndex: '9999',
+        animation: 'slideInNotification 0.3s ease'
+    });
+    
+    // Adicionar ao documento
+    document.body.appendChild(notification);
+    
+    // Remover automaticamente após 4 segundos
+    setTimeout(() => {
+        if (notification.parentElement) {
+            notification.style.animation = 'slideOutNotification 0.3s ease';
+            setTimeout(() => notification.remove(), 300);
+        }
+    }, 4000);
+}
+
+// Adicionar estilos das notificações
+const notificationStyles = `
+    @keyframes slideInNotification {
+        from { transform: translateX(100%); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+    }
+    
+    @keyframes slideOutNotification {
+        from { transform: translateX(0); opacity: 1; }
+        to { transform: translateX(100%); opacity: 0; }
+    }
+    
+    .admin-notification .notification-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .admin-notification button {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 18px;
+        cursor: pointer;
+        padding: 0;
+        margin-left: 10px;
+    }
+`;
+
+// Adicionar estilos ao head
+const styleSheet = document.createElement('style');
+styleSheet.textContent = notificationStyles;
+document.head.appendChild(styleSheet);
+
+// Fechar menu ao clicar fora
+document.addEventListener('click', function(event) {
+    const adminMenu = document.getElementById('adminMenu');
+    const dropdown = document.getElementById('adminDropdown');
+    
+    if (adminMenu && !adminMenu.contains(event.target)) {
+        dropdown.classList.remove('show');
+    }
+    
+    // Fechar modal ao clicar fora
+    const modal = document.getElementById('loginModal');
+    if (modal && event.target === modal) {
+        closeLogin();
+    }
+});
+
+// Fechar modal com Escape
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        const modal = document.getElementById('loginModal');
+        if (modal && modal.classList.contains('show')) {
+            closeLogin();
+        }
+        
+        const dropdown = document.getElementById('adminDropdown');
+        if (dropdown && dropdown.classList.contains('show')) {
+            closeAdminMenu();
+        }
+    }
+});
+
+// ===== EXPORTAÇÃO PARA USO GLOBAL =====
+window.LavoisierSite = {
+    scrollToSection,
+    openLightbox,
+    closeLightbox,
+    toggleFAQ,
+    trackEvent,
+    toggleAdminMenu,
+    openLogin,
+    closeLogin,
+    performLogin,
+    showAdminTab,
+    logout,
+    loadSuggestionsToAdmin,
+    approveSuggestion,
+    rejectSuggestion,
+    deleteSuggestion
+};
+
+// ===== FUNÇÕES DO SISTEMA DE SUGESTÕES =====
+
+// Função para carregar sugestões no admin
+function loadSuggestionsToAdmin() {
+    const adminSuggestionsContainer = document.querySelector('.suggestions-admin-list');
+    if (!adminSuggestionsContainer) return;
+    
+    const suggestions = JSON.parse(localStorage.getItem('gardenSuggestions') || '[]');
+    
+    // Limpar container
+    adminSuggestionsContainer.innerHTML = '';
+    
+    if (suggestions.length === 0) {
+        adminSuggestionsContainer.innerHTML = '<p class="no-suggestions">Nenhuma sugestão encontrada.</p>';
+        return;
+    }
+    
+    // Gerar HTML das sugestões
+    suggestions.reverse().forEach((suggestion, index) => {
+        const card = document.createElement('div');
+        card.className = 'admin-suggestion-card';
+        card.innerHTML = `
+            <div class="suggestion-header">
+                <h4>${suggestion.nome}</h4>
+                <span class="suggestion-date">${suggestion.data}</span>
+            </div>
+            <div class="suggestion-info">
+                <p><strong>Email:</strong> ${suggestion.email || 'Não informado'}</p>
+                <p><strong>Turma:</strong> ${suggestion.turma || 'Não informada'}</p>
+                <p><strong>Planta sugerida:</strong> ${suggestion.planta || 'Não especificada'}</p>
+            </div>
+            <div class="suggestion-content">
+                <p>${suggestion.sugestao}</p>
+            </div>
+            <div class="suggestion-actions">
+                ${suggestion.status === 'pendente' ? `
+                    <button class="btn-approve" onclick="approveSuggestion(${suggestion.id})">Aprovar</button>
+                    <button class="btn-reject" onclick="rejectSuggestion(${suggestion.id})">Rejeitar</button>
+                ` : `
+                    <span class="suggestion-status ${suggestion.status === 'aprovada' ? 'Aprovada' : 'Rejeitada'}">
+                        Status: ${suggestion.status}
+                    </span>
+                `}
+                <button class="btn-delete" onclick="deleteSuggestion(${suggestion.id})">Excluir</button>
+            </div>
+        `;
+        adminSuggestionsContainer.appendChild(card);
+    });
+    
+    // Atualizar contador
+    updateSuggestionsCount();
+}
+
+// Função para aprovar sugestão
+function approveSuggestion(id) {
+    const suggestions = JSON.parse(localStorage.getItem('gardenSuggestions') || '[]');
+    const suggestion = suggestions.find(s => s.id == id);
+    if (suggestion) {
+        suggestion.status = 'aprovada';
+        localStorage.setItem('gardenSuggestions', JSON.stringify(suggestions));
+        loadSuggestionsToAdmin();
+        showNotification('Sugestão aprovada!', 'success');
+    }
+}
+
+// Função para rejeitar sugestão
+function rejectSuggestion(id) {
+    const suggestions = JSON.parse(localStorage.getItem('gardenSuggestions') || '[]');
+    const suggestion = suggestions.find(s => s.id == id);
+    if (suggestion) {
+        suggestion.status = 'rejeitada';
+        localStorage.setItem('gardenSuggestions', JSON.stringify(suggestions));
+        loadSuggestionsToAdmin();
+        showNotification('Sugestão rejeitada!', 'info');
+    }
+}
+
+// Função para deletar sugestão
+function deleteSuggestion(id) {
+    if (confirm('Tem certeza que deseja excluir esta sugestão?')) {
+        let suggestions = JSON.parse(localStorage.getItem('gardenSuggestions') || '[]');
+        suggestions = suggestions.filter(s => s.id != id);
+        localStorage.setItem('gardenSuggestions', JSON.stringify(suggestions));
+        loadSuggestionsToAdmin();
+        showNotification('Sugestão excluída!', 'success');
+    }
+}
+
+// Função para atualizar contador de sugestões
+function updateSuggestionsCount() {
+    const suggestions = JSON.parse(localStorage.getItem('gardenSuggestions') || '[]');
+    const total = suggestions.length;
+    const pendentes = suggestions.filter(s => s.status === 'pendente').length;
+    const aprovadas = suggestions.filter(s => s.status === 'aprovada').length;
+    const rejeitadas = suggestions.filter(s => s.status === 'rejeitada').length;
+    
+    // Atualizar elementos no painel admin se existirem
+    const totalElement = document.querySelector('.stats-total');
+    const pendentesElement = document.querySelector('.stats-pendentes');
+    const aprovadasElement = document.querySelector('.stats-aprovadas');
+    const rejeitadasElement = document.querySelector('.stats-rejeitadas');
+    
+    if (totalElement) totalElement.textContent = total;
+    if (pendentesElement) pendentesElement.textContent = pendentes;
+    if (aprovadasElement) aprovadasElement.textContent = aprovadas;
+    if (rejeitadasElement) rejeitadasElement.textContent = rejeitadas;
+}
+</script>
+</body>
+</html>
