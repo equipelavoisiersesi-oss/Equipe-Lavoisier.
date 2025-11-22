@@ -1,0 +1,1456 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipe Lavoisier SESI - Horta Escolar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <style>
+        :root {
+          --primary-700: #2d5016;
+          --primary-500: #4a7c59;
+          --primary-300: #7fb069;
+          --accent-500: #d4a574;
+          --accent-300: #e8c4a8;
+          --neutral-0: #ffffff;
+          --neutral-50: #f8f9fa;
+          --neutral-100: #f1f3f4;
+          --neutral-200: #e8eaed;
+          --neutral-300: #dadce0;
+          --neutral-400: #bdc1c6;
+          --neutral-500: #9aa0a6;
+          --neutral-600: #80868b;
+          --neutral-700: #5f6368;
+          --neutral-800: #3c4043;
+          --neutral-900: #202124;
+          --success: #28a745;
+          --warning: #ffc107;
+          --error: #dc3545;
+          --font-primary: 'Poppins', sans-serif;
+          --font-secondary: 'Inter', sans-serif;
+          --space-xs: 0.25rem;
+          --space-sm: 0.5rem;
+          --space-md: 1rem;
+          --space-lg: 1.5rem;
+          --space-xl: 2rem;
+          --space-2xl: 3rem;
+          --space-3xl: 4rem;
+          --space-xxxl: 6rem;
+          --radius-sm: 4px;
+          --radius-md: 8px;
+          --radius-lg: 12px;
+          --radius-xl: 20px;
+          --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+          --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+          --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+          --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+          --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        body {
+          font-family: var(--font-primary);
+          line-height: 1.6;
+          color: var(--neutral-800);
+          background-color: var(--neutral-0);
+          overflow-x: hidden;
+        }
+
+        .container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 var(--space-md);
+        }
+
+        .navbar {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          background: rgba(45, 80, 22, 0.95);
+          backdrop-filter: blur(10px);
+          padding: var(--space-md) 0;
+          z-index: 1000;
+          transition: all 0.3s ease;
+        }
+
+        .nav-container {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 var(--space-md);
+        }
+
+        .nav-brand {
+          display: flex;
+          align-items: center;
+          gap: var(--space-sm);
+          color: var(--neutral-0);
+          font-size: 1.5rem;
+          font-weight: 700;
+          text-decoration: none;
+        }
+
+        .nav-menu {
+          display: flex;
+          list-style: none;
+          gap: var(--space-xl);
+          align-items: center;
+        }
+
+        .nav-menu a {
+          color: var(--neutral-0);
+          text-decoration: none;
+          font-weight: 500;
+          transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+          color: var(--accent-300);
+        }
+
+        .admin-menu {
+          display: flex;
+          align-items: center;
+        }
+
+        .admin-toggle {
+          background: rgba(255, 255, 255, 0.2);
+          border: none;
+          color: var(--neutral-0);
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.2rem;
+          transition: all 0.3s ease;
+        }
+
+        .admin-toggle:hover {
+          background: rgba(255, 255, 255, 0.3);
+          transform: scale(1.1);
+        }
+
+        .mobile-toggle {
+          display: none;
+          background: none;
+          border: none;
+          color: var(--neutral-0);
+          font-size: 1.5rem;
+          cursor: pointer;
+        }
+
+        .hero {
+          background: linear-gradient(135deg, var(--primary-700) 0%, var(--primary-500) 100%);
+          color: var(--neutral-0);
+          padding: calc(80px + var(--space-3xl)) 0 var(--space-3xl);
+          text-align: center;
+          min-height: 80vh;
+          display: flex;
+          align-items: center;
+        }
+
+        .hero-content h1 {
+          font-size: 3.5rem;
+          font-weight: 700;
+          margin-bottom: var(--space-lg);
+          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-content p {
+          font-size: 1.25rem;
+          margin-bottom: var(--space-2xl);
+          max-width: 600px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .hero-buttons {
+          display: flex;
+          gap: var(--space-lg);
+          justify-content: center;
+          flex-wrap: wrap;
+        }
+
+        .btn {
+          padding: var(--space-lg) var(--space-2xl);
+          border: none;
+          border-radius: var(--radius-lg);
+          font-size: 1rem;
+          font-weight: 600;
+          text-decoration: none;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: var(--space-sm);
+        }
+
+        .btn-primary {
+          background: var(--accent-500);
+          color: var(--neutral-0);
+        }
+
+        .btn-primary:hover {
+          background: #c49565;
+          transform: translateY(-2px);
+          box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+          background: transparent;
+          color: var(--neutral-0);
+          border: 2px solid var(--neutral-0);
+        }
+
+        .btn-secondary:hover {
+          background: var(--neutral-0);
+          color: var(--primary-700);
+        }
+
+        .section {
+          padding: var(--space-3xl) 0;
+        }
+
+        .section-title {
+          font-size: 2.5rem;
+          font-weight: 700;
+          text-align: center;
+          color: var(--primary-700);
+          margin-bottom: var(--space-md);
+        }
+
+        .section-subtitle {
+          font-size: 1.125rem;
+          text-align: center;
+          color: var(--neutral-600);
+          max-width: 600px;
+          margin: 0 auto var(--space-2xl);
+        }
+
+        .sobre {
+          background: var(--neutral-50);
+        }
+
+        .sobre-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: var(--space-3xl);
+          align-items: center;
+          margin-top: var(--space-2xl);
+        }
+
+        .sobre-text h3 {
+          font-size: 1.75rem;
+          color: var(--primary-700);
+          margin-bottom: var(--space-lg);
+        }
+
+        .sobre-text p {
+          margin-bottom: var(--space-lg);
+          color: var(--neutral-600);
+        }
+
+        .sobre-image {
+          text-align: center;
+        }
+
+        .sobre-image img {
+          max-width: 100%;
+          height: auto;
+          border-radius: var(--radius-lg);
+          box-shadow: var(--shadow-xl);
+        }
+
+        .plantas-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: var(--space-xl);
+          margin-top: var(--space-2xl);
+        }
+
+        .planta-card {
+          background: var(--neutral-0);
+          border-radius: var(--radius-lg);
+          overflow: hidden;
+          box-shadow: var(--shadow-card);
+          transition: transform 0.3s ease;
+        }
+
+        .planta-card:hover {
+          transform: translateY(-5px);
+          box-shadow: var(--shadow-xl);
+        }
+
+        .planta-image {
+          height: 200px;
+          background: linear-gradient(45deg, var(--primary-300), var(--primary-500));
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 4rem;
+          color: var(--neutral-0);
+        }
+
+        .planta-content {
+          padding: var(--space-lg);
+        }
+
+        .planta-content h3 {
+          color: var(--primary-700);
+          margin-bottom: var(--space-sm);
+        }
+
+        .planta-content p {
+          color: var(--neutral-600);
+        }
+
+        .blog {
+          background: var(--neutral-50);
+        }
+
+        .blog-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+          gap: var(--space-xl);
+          margin-top: var(--space-2xl);
+        }
+
+        .blog-card {
+          background: var(--neutral-0);
+          border-radius: var(--radius-lg);
+          overflow: hidden;
+          box-shadow: var(--shadow-card);
+          transition: transform 0.3s ease;
+          cursor: pointer;
+        }
+
+        .blog-card:hover {
+          transform: translateY(-5px);
+          box-shadow: var(--shadow-xl);
+        }
+
+        .blog-content {
+          padding: var(--space-lg);
+        }
+
+        .blog-title {
+          color: var(--primary-700);
+          margin-bottom: var(--space-sm);
+        }
+
+        .blog-excerpt {
+          color: var(--neutral-600);
+          margin-bottom: var(--space-lg);
+        }
+
+        .blog-link {
+          color: var(--primary-500);
+          text-decoration: none;
+          font-weight: 600;
+        }
+
+        .blog-link:hover {
+          color: var(--primary-700);
+        }
+
+        .faq {
+          background: var(--neutral-50);
+        }
+
+        .faq-container {
+          max-width: 800px;
+          margin: var(--space-2xl) auto 0;
+        }
+
+        .faq-item {
+          background: var(--neutral-0);
+          border-radius: var(--radius-md);
+          margin-bottom: var(--space-md);
+          overflow: hidden;
+          box-shadow: var(--shadow-sm);
+        }
+
+        .faq-question {
+          padding: var(--space-lg);
+          cursor: pointer;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          transition: background-color 0.3s ease;
+        }
+
+        .faq-question:hover {
+          background: var(--neutral-50);
+        }
+
+        .faq-question h3 {
+          color: var(--primary-700);
+          margin: 0;
+        }
+
+        .faq-icon {
+          color: var(--primary-300);
+          transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-icon {
+          transform: rotate(180deg);
+        }
+
+        .faq-answer {
+          padding: 0 var(--space-lg);
+          max-height: 0;
+          overflow: hidden;
+          transition: all 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+          padding: var(--space-lg);
+          max-height: 200px;
+        }
+
+        .faq-answer p {
+          color: var(--neutral-600);
+          margin: 0;
+        }
+
+        .contato {
+          background: var(--neutral-50);
+        }
+
+        .contato-content {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: var(--space-3xl);
+          margin-top: var(--space-2xl);
+        }
+
+        .contato-info h3 {
+          font-size: 1.5rem;
+          color: var(--primary-700);
+          margin-bottom: var(--space-lg);
+        }
+
+        .contato-item {
+          display: flex;
+          align-items: center;
+          gap: var(--space-md);
+          margin-bottom: var(--space-lg);
+          padding: var(--space-md);
+          background: var(--neutral-0);
+          border-radius: var(--radius-md);
+          box-shadow: var(--shadow-sm);
+        }
+
+        .contato-item i {
+          color: var(--primary-300);
+          font-size: 1.2rem;
+        }
+
+        .social-links {
+          display: flex;
+          gap: var(--space-md);
+          margin-top: var(--space-lg);
+        }
+
+        .social-link {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 50px;
+          height: 50px;
+          background: var(--primary-300);
+          color: var(--neutral-0);
+          border-radius: 50%;
+          text-decoration: none;
+          transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+          background: var(--primary-700);
+          transform: translateY(-2px);
+        }
+
+        .form-group {
+          margin-bottom: var(--space-lg);
+        }
+
+        .form-group label {
+          display: block;
+          margin-bottom: var(--space-sm);
+          font-weight: 600;
+          color: var(--primary-700);
+        }
+
+        .form-group input,
+        .form-group textarea {
+          width: 100%;
+          padding: var(--space-md);
+          border: 2px solid var(--neutral-300);
+          border-radius: var(--radius-md);
+          font-size: 1rem;
+          transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+          outline: none;
+          border-color: var(--primary-300);
+        }
+
+        .form-group textarea {
+          resize: vertical;
+          min-height: 120px;
+        }
+
+        .footer {
+          background: var(--primary-700);
+          color: var(--neutral-0);
+          padding: var(--space-2xl) 0 var(--space-lg);
+          text-align: center;
+        }
+
+        .footer-content {
+          margin-bottom: var(--space-lg);
+        }
+
+        .footer-links {
+          display: flex;
+          justify-content: center;
+          gap: var(--space-xl);
+          margin-bottom: var(--space-lg);
+          flex-wrap: wrap;
+        }
+
+        .footer-links a {
+          color: var(--neutral-0);
+          text-decoration: none;
+          transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+          color: var(--accent-300);
+        }
+
+        .developer-credit {
+          margin-top: var(--space-lg);
+          padding-top: var(--space-lg);
+          border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Modais */
+        .modal {
+          display: none;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.8);
+          z-index: 2000;
+          backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+          background: var(--neutral-0);
+          margin: 5% auto;
+          padding: var(--space-2xl);
+          border-radius: var(--radius-lg);
+          max-width: 600px;
+          max-height: 80vh;
+          overflow-y: auto;
+          position: relative;
+          animation: modalAppear 0.3s ease-out;
+        }
+
+        @keyframes modalAppear {
+          from {
+            opacity: 0;
+            transform: translateY(-50px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .close {
+          position: absolute;
+          top: var(--space-md);
+          right: var(--space-md);
+          font-size: 2rem;
+          cursor: pointer;
+          color: var(--neutral-500);
+          transition: color 0.3s ease;
+        }
+
+        .close:hover {
+          color: var(--neutral-800);
+        }
+
+        /* Modal de Login */
+        .login-modal {
+          max-width: 400px;
+        }
+
+        /* Modal do Blog */
+        .blog-modal-content {
+          max-width: 700px;
+        }
+
+        .blog-modal-content h2 {
+          color: var(--primary-700);
+          margin-bottom: var(--space-lg);
+        }
+
+        .blog-modal-content .blog-date {
+          color: var(--neutral-500);
+          font-size: 0.9rem;
+          margin-bottom: var(--space-lg);
+        }
+
+        .blog-modal-content p {
+          margin-bottom: var(--space-md);
+          line-height: 1.7;
+        }
+
+        /* Admin Dashboard */
+        .admin-dashboard {
+          background: var(--neutral-0);
+          border-radius: var(--radius-lg);
+          padding: var(--space-2xl);
+          max-width: 900px;
+          margin: 2% auto;
+        }
+
+        .admin-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: var(--space-2xl);
+          padding-bottom: var(--space-lg);
+          border-bottom: 2px solid var(--neutral-200);
+        }
+
+        .admin-header h2 {
+          color: var(--primary-700);
+          margin: 0;
+        }
+
+        .admin-logout {
+          background: var(--error);
+          color: var(--neutral-0);
+          border: none;
+          padding: var(--space-sm) var(--space-lg);
+          border-radius: var(--radius-md);
+          cursor: pointer;
+          font-weight: 600;
+          transition: all 0.3s ease;
+        }
+
+        .admin-logout:hover {
+          background: #c82333;
+        }
+
+        .dashboard-stats {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+          gap: var(--space-md);
+          margin-bottom: var(--space-xl);
+        }
+
+        .stat-card {
+          padding: var(--space-lg);
+          border-radius: var(--radius-md);
+          text-align: center;
+          color: var(--neutral-0);
+        }
+
+        .stat-card.total {
+          background: var(--primary-300);
+        }
+
+        .stat-card.new {
+          background: var(--accent-500);
+        }
+
+        .stat-card.answered {
+          background: var(--success);
+        }
+
+        .stat-card .number {
+          font-size: 2rem;
+          font-weight: bold;
+        }
+
+        .stat-card .label {
+          font-size: 0.9rem;
+        }
+
+        .mensagens-lista {
+          margin-top: var(--space-xl);
+        }
+
+        .mensagens-lista h4 {
+          color: var(--primary-700);
+          margin-bottom: var(--space-md);
+        }
+
+        .mensagem-item {
+          background: var(--neutral-50);
+          padding: var(--space-md);
+          border-radius: var(--radius-md);
+          margin-bottom: var(--space-md);
+          border-left: 4px solid var(--primary-300);
+        }
+
+        .mensagem-item .info {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: var(--space-sm);
+        }
+
+        .mensagem-item .nome {
+          font-weight: bold;
+          color: var(--primary-700);
+        }
+
+        .mensagem-item .data {
+          color: var(--neutral-500);
+          font-size: 0.9rem;
+        }
+
+        .mensagem-item .conteudo {
+          color: var(--neutral-600);
+          margin-bottom: var(--space-sm);
+        }
+
+        .mensagem-item .status {
+          display: inline-block;
+          padding: var(--space-xs) var(--space-sm);
+          border-radius: var(--radius-sm);
+          font-size: 0.8rem;
+          font-weight: 600;
+        }
+
+        .mensagem-item .status.pendente {
+          background: #fff3cd;
+          color: #856404;
+        }
+
+        .mensagem-item .status.respondida {
+          background: #d4edda;
+          color: #155724;
+        }
+
+        .success-message {
+          position: fixed;
+          top: 100px;
+          right: 20px;
+          background: var(--success);
+          color: white;
+          padding: var(--space-lg);
+          border-radius: var(--radius-md);
+          box-shadow: var(--shadow-lg);
+          z-index: 3000;
+          animation: successAppear 0.3s ease-out;
+        }
+
+        @keyframes successAppear {
+          from {
+            opacity: 0;
+            transform: translateX(100%);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+          .nav-menu {
+            display: none;
+          }
+          
+          .mobile-toggle {
+            display: block;
+          }
+
+          .hero-content h1 {
+            font-size: 2.5rem;
+          }
+
+          .sobre-grid,
+          .contato-content {
+            grid-template-columns: 1fr;
+            gap: var(--space-xl);
+          }
+          
+          .plantas-grid,
+          .blog-grid {
+            grid-template-columns: 1fr;
+          }
+          
+          .section {
+            padding: var(--space-2xl) 0;
+          }
+          
+          .container {
+            padding: 0 var(--space-sm);
+          }
+        }
+
+        .text-center {
+          text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img src="minha-logo-lavoisier.png" alt="Logo Horta Lavoisier" style="height: 40px; width: 40px;">
+                <span>Horta Lavoisier</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#plantas">Nossas Plantas</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contato">Contato</a></li>
+                <li><a href="#faca-voce-mesmo">Faça Você Mesmo</a></li>
+                <li><a href="#videos">Vídeos</a></li>
+            </ul>
+            <div class="admin-menu">
+                <button class="admin-toggle" onclick="openLogin()" title="Acessar Área Administrativa">
+                    <span class="admin-dots">≡</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Horta Escolar Lavoisier</h1>
+                <p>Aprendendo sobre sustentabilidade e natureza através da prática</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="scrollToSection('sobre')">
+                        Conhecer a Horta
+                    </button>
+                    <button class="btn btn-secondary" onclick="scrollToSection('contato')">
+                        Entre em Contato
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre -->
+    <section class="section sobre" id="sobre">
+        <div class="container">
+            <h2 class="section-title">Equipe de Alunos do SESI</h2>
+            <p class="section-subtitle">Uma iniciativa educacional para ensinar sustentabilidade</p>
+            
+            <div class="sobre-grid">
+                <div class="sobre-text">
+                    <h3>Nosso Projeto</h3>
+                    <p>A Equipe Lavoisier é formada por alunos dedicados do SESI que aprenderam sobre sustentabilidade e botânica na prática. Através da nossa horta escolar, exploramos conceitos científicos, responsabilidade ambiental e trabalho em equipe.</p>
+                    <p>Cada aluno tem um papel fundamental no projeto: desde o planejamento inicial até o cuidado diário das plantas. Este projeto nos ensinou sobre ciclos naturais, importância da alimentação saudável e como pequenos atos podem fazer uma grande diferença.</p>
+                    <p>Enquanto isso, continuamos documentando nossos aprendizados e experiências para compartilhar com toda a comunidade escolar.</p>
+                </div>
+                <div class="sobre-image">
+                    <img src="minha-logo-lavoisier.png" alt="Equipe Lavoisier" style="max-width: 300px;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nossas Plantas -->
+    <section class="section" id="plantas">
+        <div class="container">
+            <h2 class="section-title">Nossas Plantas</h2>
+            <p class="section-subtitle">Conheça as espécies que cultivamos na nossa horta</p>
+            
+            <div class="plantas-grid">
+                <div class="planta-card">
+                    <div class="planta-image">🥬</div>
+                    <div class="planta-content">
+                        <h3>Alface</h3>
+                        <p>Uma das nossas primeiras culturas, fácil de cultivar e perfeita para iniciantes. Colhemos alfaces frescas para a cantina da escola.</p>
+                    </div>
+                </div>
+                
+                <div class="planta-card">
+                    <div class="planta-image">🍅</div>
+                    <div class="planta-content">
+                        <h3>Tomate</h3>
+                        <p>Tomates cereja e tradicionais, ideais para saladas e sanduíches. Fazemos um experimento comparando diferentes tipos de adubo.</p>
+                    </div>
+                </div>
+                
+                <div class="planta-card">
+                    <div class="planta-image">🌿</div>
+                    <div class="planta-content">
+                        <h3>Manjericão</h3>
+                        <p>Erva aromática essencial na culinária italiana. Suas folhas liberam um aroma incrível e atraem abelhas benéficas.</p>
+                    </div>
+                </div>
+                
+                <div class="planta-card">
+                    <div class="planta-image">🥕</div>
+                    <div class="planta-content">
+                        <h3>Rabanete</h3>
+                        <p>Crescimento rápido e fácil de cuidar. Perfeito para ensinarmos sobre o tempo de germinação e desenvolvimento das plantas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog -->
+    <section class="section blog" id="blog">
+        <div class="container">
+            <h2 class="section-title">Blog da Horta</h2>
+            <p class="section-subtitle">Acompanhe as novidades do nosso projeto</p>
+            
+            <div class="blog-grid">
+                <div class="blog-card">
+                    <div class="blog-content">
+                        <h3 class="blog-title">Dicas de Plantio para Iniciantes</h3>
+                        <p class="blog-excerpt">Aprenda os segredos para começar sua própria horta em casa. Desde a escolha do local até os primeiros cuidados...</p>
+                        <a href="#" class="blog-link" onclick="openBlogModal('Dicas de Plantio para Iniciantes', 'Começar uma horta é mais fácil do que você imagina! Primeiro, escolha um local com boa iluminação solar (pelo menos 6 horas por dia). O solo deve ser bem drenado e rico em matéria orgânica. Para iniciantes, recomendamos começar com plantas como alface, rabanete e manjericão, que são mais resistentes e de crescimento rápido. Lembre-se: regue regularmente, mas evite encharcar o solo!', '12 Nov 2025')">Ler mais</a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-content">
+                        <h3 class="blog-title">Novos Experimentos Científicos</h3>
+                        <p class="blog-excerpt">Estamos testando diferentes tipos de adubo orgânico para ver qual promove melhor crescimento das plantas...</p>
+                        <a href="#" class="blog-link" onclick="openBlogModal('Novos Experimentos Científicos', 'Nossa equipe está conduzindo experimentos científicos fascinantes! Estamos comparando diferentes tipos de adubo orgânico: composto caseiro, húmus de minhoca e adubo verde. Cada grupo de alunos cuida de uma seção com um tipo diferente de adubo. Estamos medindo altura, cor das folhas e resistência das plantas semanalmente. Os dados collected serão apresentados na feira de ciências da escola!', '10 Nov 2025')">Ler mais</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section faq" id="faq">
+        <div class="container">
+            <h2 class="section-title">Perguntas Frequentes</h2>
+            <p class="section-subtitle">Tire suas dúvidas sobre nosso projeto</p>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>Como funciona a horta?</h3>
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>A horta funciona como um laboratório vivo onde os alunos aprendem sobre botânica, química e sustentabilidade na prática. Os estudantes cuidam das plantas, registram dados de crescimento e aprendem sobre os ciclos naturais.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>Posso visitar a horta?</h3>
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Claro! Visitas podem ser agendadas através do nosso Instagram @equipelavoisier. Adoramos compartilhar nossos aprendizados com outros estudantes e educadores.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>Que tipo de plantas vocês cultivam?</h3>
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Actualmente cultivamos alface, tomate, manjericão e rabanete. Planejamos expandir para cenoura, salsa e outras ervas aromáticas conforme o projeto evolui.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>Posso enviar sugestões?</h3>
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Claro! Use nosso formulário de contato abaixo para enviar sugestões, perguntas ou ideias. Adoramos receber feedback da comunidade!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Faça Você Mesmo -->
+    <section class="section" id="faca-voce-mesmo">
+        <div class="container">
+            <h2 class="section-title">Faça Você Mesmo</h2>
+            <p class="section-subtitle">Tutoriais em vídeo para você criar sua própria horta</p>
+            
+            <div class="plantas-grid">
+                <div class="planta-card">
+                    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+                        <iframe src="https://www.youtube.com/embed/8JPJUHfqiBA" 
+                                style="position: absolute; top:0; left: 0; width: 100%; height: 100%;" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="planta-content">
+                        <h3>Cuidados com Plantas</h3>
+                        <p>Aprenda os cuidados básicos para manter suas plantas saudáveis e produtivas.</p>
+                    </div>
+                </div>
+                
+                <div class="planta-card">
+                    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+                        <iframe src="https://www.youtube.com/embed/VlLZtfqoleQ" 
+                                style="position: absolute; top:0; left: 0; width: 100%; height: 100%;" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="planta-content">
+                        <h3>Dicas Avançadas</h3>
+                        <p>Dicas profissionais para maximizar o crescimento e produtividade da sua horta.</p>
+                    </div>
+                </div>
+                
+                <div class="planta-card">
+                    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+                        <iframe src="https://www.youtube.com/embed/uIwbgN3gQA8" 
+                                style="position: absolute; top:0; left: 0; width: 100%; height: 100%;" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="planta-content">
+                        <h3>Experimentos</h3>
+                        <p>Experimentos científicos divertidos para entender melhor o crescimento das plantas.</p>
+                    </div>
+                </div>
+                
+                <div class="planta-card">
+                    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+                        <iframe src="https://www.youtube.com/embed/g8vFRYdyuME" 
+                                style="position: absolute; top:0; left: 0; width: 100%; height: 100%;" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="planta-content">
+                        <h3>Comece Sua Horta</h3>
+                        <p>Guia completo para iniciantes: desde o planejamento até a primeira colheita.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato -->
+    <section class="section contato" id="contato">
+        <div class="container">
+            <h2 class="section-title">Contato</h2>
+            <p class="section-subtitle">Envie suas sugestões e entre em contato conosco</p>
+            
+            <div class="contato-content">
+                <div class="contato-info">
+                    <h3>Fale Conosco</h3>
+                    
+                    <div class="contato-item">
+                        <i data-lucide="instagram"></i>
+                        <div>
+                            <strong>Instagram Principal</strong><br>
+                            <a href="https://instagram.com/equipelavoisier" target="_blank">@equipelavoisier</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contato-item">
+                        <i data-lucide="mail"></i>
+                        <div>
+                            <strong>Envie suas Sugestões</strong><br>
+                            Use o formulário ao lado
+                        </div>
+                    </div>
+                    
+                    <div class="contato-item">
+                        <i data-lucide="users"></i>
+                        <div>
+                            <strong>Equipe</strong><br>
+                            Alunos do SESI Lavoisier
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contato-form">
+                    <h3 style="color: var(--primary-700); margin-bottom: var(--space-lg);">Envie sua Sugestão</h3>
+                    <form id="sugestaoForm">
+                        <div class="form-group">
+                            <label for="sugestao-nome">Seu Nome:</label>
+                            <input type="text" id="sugestao-nome" name="nome" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="sugestao-email">Seu Email:</label>
+                            <input type="email" id="sugestao-email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="sugestao-mensagem">Sua Sugestão ou Pergunta:</label>
+                            <textarea id="sugestao-mensagem" name="mensagem" required></textarea>
+                        </div>
+                        
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Enviar Sugestão</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vídeos -->
+    <section class="section" id="videos">
+        <div class="container">
+            <h2 class="section-title">Vídeos da Nossa Horta</h2>
+            <p class="section-subtitle">Acompanhe nosso projeto em vídeos</p>
+            
+            <div style="text-align: center; padding: var(--space-3xl) 0; background: var(--neutral-50); border-radius: var(--radius-xl); margin-top: var(--space-2xl);">
+                <div style="font-size: 4rem; margin-bottom: var(--space-lg); opacity: 0.5;">🎥</div>
+                <h3 style="color: var(--neutral-700); margin-bottom: var(--space-md);">Vídeos em breve!</h3>
+                <p style="color: var(--neutral-600); margin-bottom: var(--space-lg);">Em breve teremos vídeos mostrando o progresso da nossa horta.</p>
+                <button class="btn btn-primary" onclick="scrollToSection('faca-voce-mesmo')">
+                    Enquanto isso, veja os tutoriais
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Equipe Lavoisier SESI - Horta Escolar. Todos os direitos reservados.</p>
+                
+                <div class="footer-links">
+                    <a href="#inicio">Início</a>
+                    <a href="#sobre">Sobre</a>
+                    <a href="#plantas">Plantas</a>
+                    <a href="#blog">Blog</a>
+                    <a href="#contato">Contato</a>
+                </div>
+            </div>
+            
+            <div class="developer-credit">
+                <div style="display: flex; flex-direction: column; align-items: center; gap: var(--space-sm);">
+                    <p style="font-size: 0.9rem; opacity: 0.8; margin: 0;">Desenvolvido por</p>
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: var(--space-sm);">
+                        <span style="font-size: 1.1rem; font-weight: 600; color: var(--neutral-0);">@Theduckkzx</span>
+                        <a href="https://instagram.com/Theduckkzx" target="_blank" 
+                           style="display: inline-flex; align-items: center; gap: var(--space-xs); 
+                                  background: linear-gradient(135deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+                                  color: white; text-decoration: none; padding: var(--space-sm) var(--space-lg); 
+                                  border-radius: var(--radius-lg); font-weight: 600; font-size: 0.9rem; 
+                                  transition: all 0.3s ease; box-shadow: var(--shadow-sm);"
+                           onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='var(--shadow-md)';"
+                           onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='var(--shadow-sm)';">
+                            <i data-lucide="instagram" style="width: 18px; height: 18px;"></i>
+                            Seguir no Instagram
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal de Login -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content login-modal">
+            <span class="close" onclick="closeLogin()">&times;</span>
+            <h2 style="color: var(--primary-700); margin-bottom: var(--space-lg); text-align: center;">Acesso Administrativo</h2>
+            <form onsubmit="return fazerLogin()">
+                <div class="form-group">
+                    <label for="usuario">Usuário:</label>
+                    <input type="text" id="usuario" name="usuario" required>
+                </div>
+                <div class="form-group">
+                    <label for="senha">Senha:</label>
+                    <input type="password" id="senha" name="senha" required>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Entrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal do Blog -->
+    <div id="blogModal" class="modal">
+        <div class="modal-content blog-modal-content">
+            <span class="close" onclick="closeBlogModal()">&times;</span>
+            <div id="blogContent"></div>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div id="adminDashboard" class="modal">
+        <div class="modal-content admin-dashboard">
+            <div class="admin-header">
+                <h2>Dashboard Administrativo</h2>
+                <button class="admin-logout" onclick="sairAdmin()">Sair</button>
+            </div>
+            
+            <div class="dashboard-stats">
+                <div class="stat-card total">
+                    <div class="number" id="totalMensagens">0</div>
+                    <div class="label">Mensagens</div>
+                </div>
+                <div class="stat-card new">
+                    <div class="number" id="novasMensagens">0</div>
+                    <div class="label">Novas</div>
+                </div>
+                <div class="stat-card answered">
+                    <div class="number" id="respondidasMensagens">0</div>
+                    <div class="label">Respondidas</div>
+                </div>
+            </div>
+            
+            <div class="mensagens-lista">
+                <h4>Mensagens Recebidas</h4>
+                <div id="listaMensagens">
+                    <!-- As mensagens serão carregadas aqui via JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', function() {
+            // Inicializar ícones Lucide
+            lucide.createIcons();
+            
+            // Carregar sugestões salvas
+            carregarSugestoesNoDashboard();
+            
+            // Sistema de sugestões funcional
+            document.getElementById('sugestaoForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const nome = document.getElementById('sugestao-nome').value.trim();
+                const email = document.getElementById('sugestao-email').value.trim();
+                const mensagem = document.getElementById('sugestao-mensagem').value.trim();
+                
+                if (nome && email && mensagem) {
+                    // Salvar no localStorage
+                    const sugestoes = JSON.parse(localStorage.getItem('hortaSugestoes') || '[]');
+                    const novaSugestao = {
+                        id: Date.now(),
+                        nome: nome,
+                        email: email,
+                        mensagem: mensagem,
+                        data: new Date().toLocaleDateString('pt-BR'),
+                        status: 'pendente'
+                    };
+                    sugestoes.push(novaSugestao);
+                    localStorage.setItem('hortaSugestoes', JSON.stringify(sugestoes));
+                    
+                    // Limpar formulário
+                    this.reset();
+                    
+                    // Mostrar mensagem de sucesso
+                    mostrarMensagemSucesso('Sugestão enviada com sucesso! Obrigado pelo feedback.');
+                } else {
+                    alert('Por favor, preencha todos os campos obrigatórios.');
+                }
+            });
+        });
+
+        // Funções de navegação
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+
+        // Sistema FAQ
+        function toggleFAQ(element) {
+            const faqItem = element.parentElement;
+            const isActive = faqItem.classList.contains('active');
+            
+            // Fechar todas as FAQs
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Abrir a clicada se não estava ativa
+            if (!isActive) {
+                faqItem.classList.add('active');
+            }
+        }
+
+        // Sistema de modais
+        function openLogin() {
+            document.getElementById('loginModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLogin() {
+            document.getElementById('loginModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function openBlogModal(titulo, conteudo, data) {
+            document.getElementById('blogContent').innerHTML = `
+                <h2>${titulo}</h2>
+                <div class="blog-date">${data}</div>
+                <p>${conteudo}</p>
+            `;
+            document.getElementById('blogModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeBlogModal() {
+            document.getElementById('blogModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Sistema de login admin
+        function fazerLogin() {
+            const usuario = document.getElementById('usuario').value;
+            const senha = document.getElementById('senha').value;
+            
+            if (usuario == 'lavoisier' && senha == 'lavoisier123456') {
+                closeLogin();
+                setTimeout(() => {
+                    mostrarMensagemSucesso('Login realizado com sucesso!');
+                    abrirDashboard();
+                }, 300);
+                return false;
+            } else {
+                alert('Usuário ou senha incorretos. Tente novamente.');
+                return false;
+            }
+        }
+
+        function abrirDashboard() {
+            document.getElementById('adminDashboard').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+            carregarSugestoesNoDashboard();
+        }
+
+        function fecharDashboard() {
+            document.getElementById('adminDashboard').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function sairAdmin() {
+            fecharDashboard();
+            mostrarMensagemSucesso('Você saiu com sucesso!');
+        }
+
+        // Sistema de mensagens de sucesso
+        function mostrarMensagemSucesso(texto) {
+            const mensagem = document.createElement('div');
+            mensagem.className = 'success-message';
+            mensagem.textContent = texto;
+            document.body.appendChild(mensagem);
+            
+            setTimeout(() => {
+                mensagem.style.animation = 'successAppear 0.3s ease-out reverse';
+                setTimeout(() => {
+                    document.body.removeChild(mensagem);
+                }, 300);
+            }, 3000);
+        }
+
+        // Sistema de carregamento de sugestões
+        function carregarSugestoesNoDashboard() {
+            const sugestoes = JSON.parse(localStorage.getItem('hortaSugestoes') || '[]');
+            const listaMensagens = document.getElementById('listaMensagens');
+            const totalMensagens = document.getElementById('totalMensagens');
+            const novasMensagens = document.getElementById('novasMensagens');
+            const respondidasMensagens = document.getElementById('respondidasMensagens');
+            
+            // Atualizar contadores
+            totalMensagens.textContent = sugestoes.length;
+            const novas = sugestoes.filter(s => s.status === 'pendente').length;
+            const respondidas = sugestoes.filter(s => s.status === 'respondida').length;
+            novasMensagens.textContent = novas;
+            respondidasMensagens.textContent = respondidas;
+            
+            // Limpar lista
+            listaMensagens.innerHTML = '';
+            
+            // Adicionar mensagens
+            if (sugestoes.length === 0) {
+                listaMensagens.innerHTML = '<p style="text-align: center; color: var(--neutral-600); margin: var(--space-xl) 0;">Nenhuma sugestão recebida ainda.</p>';
+            } else {
+                sugestoes.reverse().forEach(sugestao => {
+                    const mensagemDiv = document.createElement('div');
+                    mensagemDiv.className = 'mensagem-item';
+                    mensagemDiv.innerHTML = `
+                        <div class="info">
+                            <strong class="nome">${sugestao.nome}</strong>
+                            <span class="data">${sugestao.data}</span>
+                        </div>
+                        <div class="conteudo">${sugestao.mensagem}</div>
+                        <div class="info">
+                            <small style="color: var(--neutral-500);">${sugestao.email}</small>
+                            <span class="status ${sugestao.status === 'pendente' ? 'pendente' : 'respondida'}">
+                                ${sugestao.status === 'pendente' ? 'Pendente' : 'Respondida'}
+                            </span>
+                        </div>
+                    `;
+                    listaMensagens.appendChild(mensagemDiv);
+                });
+            }
+        }
+
+        // Fechar modais ao clicar fora
+        window.onclick = function(event) {
+            const loginModal = document.getElementById('loginModal');
+            const blogModal = document.getElementById('blogModal');
+            const adminDashboard = document.getElementById('adminDashboard');
+            
+            if (event.target == loginModal) {
+                closeLogin();
+            }
+            if (event.target == blogModal) {
+                closeBlogModal();
+            }
+            if (event.target == adminDashboard) {
+                fecharDashboard();
+            }
+        }
+    </script>
+</body>
+</html>
